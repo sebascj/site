@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import { useEffect, useRef } from 'react';
-import oscillator from './components/canvas.controller';
+import oscillator from '../components/canvas.controller';
 
 function HomePage() {
   const oscillatorCanvas = useRef();
   useEffect(() => {
     const canvasContext = oscillatorCanvas.current.getContext('2d');
     oscillator(false, canvasContext);
-  });
+  }, []);
   return (
     <div>
       <Head>
