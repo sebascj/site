@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "analyze:browser": "cross-env ANALYZE=true next build",
     "format": "prettier \"src/**/*.{js, html}\" --write",
@@ -34,7 +34,8 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "react-is": "^17.0.1"
   },
   "bugs": {
     "url": "https://github.com/sebascj/site/issues"
@@ -43,6 +44,7 @@
   "dependencies": {
     "next": "^10.0.7",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
   }
 }
