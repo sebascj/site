@@ -3,7 +3,8 @@ import Tendril from '../tendril/tendril.model';
 let ctx,
   color,
   target = {},
-  tendrils = [];
+  tendrils = [],
+  animationFrame;
 
 const defaultSettings = {
   friction: 0.5,
@@ -43,7 +44,7 @@ const loop = () => {
     tendril.draw(ctx);
   }
 
-  requestAnimationFrame(loop);
+  animationFrame = requestAnimationFrame(loop);
 };
 
 const startAnimation = () => {
@@ -103,6 +104,8 @@ const init = (e) => {
 };
 
 const stopTendril = () => {
+  stopAnimation();
+  cancelAnimationFrame(animationFrame);
   document.body.removeEventListener('orientationchange', resize);
   window.removeEventListener('resize', resize);
 
