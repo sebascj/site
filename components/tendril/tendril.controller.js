@@ -1,89 +1,11 @@
-const Tendril = function (options) {
-  this.init(options || {});
-};
-
-Tendril.prototype = (function () {
-  function Node() {
-    this.x = 0;
-    this.y = 0;
-    this.vy = 0;
-    this.vx = 0;
-  }
-  return {
-    init: function (options) {
-      this.spring = options.spring + Math.random() * 0.1 - 0.05;
-      this.friction = settings.friction + Math.random() * 0.01 - 0.005;
-      this.nodes = [];
-      for (let i = 0, node; i < settings.size; i++) {
-        node = new Node();
-        node.x = target.x;
-        node.y = target.y;
-        this.nodes.push(node);
-      }
-    },
-    update: function () {
-      let spring = this.spring,
-        node = this.nodes[0];
-
-      node.vx += (target.x - node.x) * spring;
-      node.vy += (target.y - node.y) * spring;
-
-      for (let prev, i = 0, n = this.nodes.length; i < n; i++) {
-        node = this.nodes[i];
-
-        if (i > 0) {
-          prev = this.nodes[i - 1];
-
-          node.vx += (prev.x - node.x) * spring;
-          node.vy += (prev.y - node.y) * spring;
-          node.vx += prev.vx * settings.dampening;
-          node.vy += prev.vy * settings.dampening;
-        }
-
-        node.vx *= this.friction;
-        node.vy *= this.friction;
-
-        node.x += node.vx;
-        node.y += node.vy;
-
-        spring *= settings.tension;
-      }
-    },
-    draw: function () {
-      let x = this.nodes[0].x,
-        y = this.nodes[0].y,
-        a,
-        b,
-        n = this.nodes.length - 2;
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-
-      for (let i = 1; i < n; i++) {
-        a = this.nodes[i];
-        b = this.nodes[i + 1];
-        x = (a.x + b.x) * 0.5;
-        y = (a.y + b.y) * 0.5;
-
-        ctx.quadraticCurveTo(a.x, a.y, x, y);
-      }
-
-      a = this.nodes[n];
-      b = this.nodes[n + 1];
-
-      ctx.quadraticCurveTo(a.x, a.y, b.x, b.y);
-      ctx.stroke();
-      ctx.closePath();
-    }
-  };
-})();
+import Tendril from '../tendril/tendril.model';
 
 let ctx,
   color,
   target = {},
   tendrils = [];
 
-const settings = {
+const defaultSettings = {
   friction: 0.5,
   trails: 30,
   size: 50,
@@ -115,10 +37,10 @@ const loop = () => {
     ctx.strokeStyle = 'hsla(171,98%,56%,0.25)';
   }
 
-  for (let i = 0, tendril; i < settings.trails; i++) {
+  for (let i = 0, tendril; i < defaultSettings.trails; i++) {
     tendril = tendrils[i];
-    tendril.update();
-    tendril.draw();
+    tendril.update(target.x, target.y);
+    tendril.draw(ctx);
   }
 
   requestAnimationFrame(loop);
@@ -153,13 +75,15 @@ const touchstart = (event) => {
   }
 };
 
-const reset = () => {
+const reset = (targetX, targetY) => {
   tendrils = [];
-  for (let i = 0; i < settings.trails; i++) {
+  for (let i = 0; i < defaultSettings.trails; i++) {
     tendrils.push(
-      new Tendril({
-        spring: 0.45 + 0.025 * (i / settings.trails)
-      })
+      new Tendril(
+        Object.assign({ targetX, targetY }, defaultSettings, {
+          spring: 0.45 + 0.025 * (i / defaultSettings.trails)
+        })
+      )
     );
   }
 };
@@ -174,7 +98,7 @@ const init = (e) => {
 
   resize();
   mousemove(e);
-  reset();
+  reset(target.x, target.y);
   loop(ctx, color);
 };
 

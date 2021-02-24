@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { useEffect, useRef } from 'react';
-import tendril from '../components/canvas.controller';
+import tendril from '../components/tendril/tendril.controller';
 
 function HomePage() {
   const oscillatorCanvas = useRef();
