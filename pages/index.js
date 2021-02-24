@@ -1,7 +1,11 @@
 import Head from 'next/head';
 import { useEffect, useRef } from 'react';
 import tendril from '../components/tendril/tendril.controller';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
+
+import Layout from '../components/layout/layout';
+
+import Navigation from '../components/navigation/navigation';
 
 const TendrilCanvas = styled.canvas`
   position: absolute;
@@ -17,13 +21,6 @@ const Content = styled.div`
   color: #fff;
 `;
 
-const PageStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    background-color:#1d1d1d
-  }
-`;
-
 function HomePage() {
   const oscillatorCanvas = useRef();
   useEffect(() => {
@@ -33,21 +30,22 @@ function HomePage() {
   }, []);
 
   return (
-    <div>
+    <>
       <Head>
         <title>Home | Sebastian</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <PageStyle />
-      <TendrilCanvas ref={oscillatorCanvas}></TendrilCanvas>
-      <BodyWrapper>
-        <Content>
-          <h1>Hey There, </h1>
-          <h2>This is work in progress home page</h2>
-          <h3>Currently using NextJS</h3>
-        </Content>
-      </BodyWrapper>
-    </div>
+      <Layout>
+        <TendrilCanvas ref={oscillatorCanvas}></TendrilCanvas>
+        <Navigation />
+        <BodyWrapper>
+          <Content>
+            <h1>Hey There, </h1>
+            <h2>This is work in progress home page</h2>
+            <h3>Currently using NextJS</h3>
+          </Content>
+        </BodyWrapper>
+      </Layout>
+    </>
   );
 }
 
