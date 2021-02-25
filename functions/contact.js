@@ -1,9 +1,6 @@
 const mailgun = require('mailgun-js');
 
-// const formData = new FormData();
-// const mailgun = new Mailgun(formData);
-
-exports.handler = function (event, context) {
+exports.handler = function (event, context, callback) {
   const mg = mailgun({
     apiKey: process.env.MAILGUN_API_KEY,
     domain: process.env.MAILGUN_URL
@@ -16,9 +13,9 @@ exports.handler = function (event, context) {
       text: '<h1>Testing some Mailgun awesomness</h1>'
     },
     (error, response) => {
-      console.log({
+      callback(null, {
         statusCode: 200,
-        body: JSON.stringify({ message: 'email sent' })
+        body: JSON.stringify(response)
       });
     }
   );
