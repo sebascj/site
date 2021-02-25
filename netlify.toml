@@ -1,0 +1,7 @@
+[build]
+  functions = "functions"
+[context.production]
+  environment = {
+    ENV_TEST = "1234-1234-123",
+    MAILGUN_URL = "1234-1234-124"
+  }
