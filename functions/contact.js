@@ -1,4 +1,4 @@
-// const Mailgun = require('mailgun.js');
+const mailgun = require('mailgun-js');
 
 // const formData = new FormData();
 // const mailgun = new Mailgun(formData);
@@ -8,7 +8,6 @@
 // });
 
 exports.handler = async function (event, context) {
-  const Mailgun = require('mailgun.js');
   // await mg.messages
   //   .create('sandbox48da53d19a2b4316ae55ec1e025f472f.mailgun.org', {
   //     from: 'Sebastian Web Developer <sebas.cj@gmail.com>',
