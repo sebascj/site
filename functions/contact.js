@@ -5,22 +5,20 @@ exports.handler = function (event, context, callback) {
     apiKey: process.env.MAILGUN_API_KEY,
     domain: process.env.MAILGUN_URL
   });
-  mg.messages().send(
-    {
-      from: 'Sebastian Web Developer <sebas.cj@gmail.com>',
-      to: ['sebas.cj@gmail.com'],
-      subject: 'Hello World',
-      text: '<h1>Testing some Mailgun awesomness</h1>'
-    },
-    (error, response) => {
-      console.error(error);
-      console.log(response);
-
-      callback(null, {
-        statusCode: 200,
-        error: JSON.stringify(error),
-        body: JSON.stringify(response)
-      });
+  const data = {
+    from: 'Name <something@YOUR_DOMAIN>',
+    to: 'sebas.cj@gmail.com',
+    subject: 'SUBJECT',
+    text: 'TEXT',
+    html: 'HTML'
+  };
+  mg.messages().send(data, (error, response) => {
+    if (error) {
+      return console.log(error);
     }
-  );
+    callback(null, {
+      statusCode: 200,
+      body: 'Mail sent'
+    });
+  });
 };
