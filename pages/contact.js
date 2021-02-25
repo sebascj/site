@@ -6,7 +6,7 @@ import { useState } from 'react';
 const sendEmail = async (e) => {
   e.preventDefault();
   try {
-    const email = await fetch('/functions/contact', {
+    const email = await fetch('/.netlify/functions/contact', {
       method: 'POST'
     });
     console.log(email);
