@@ -32,8 +32,8 @@ function HomePage() {
       <Head>
         <title>Home | Sebastian</title>
       </Head>
+      <TendrilCanvas ref={oscillatorCanvas}></TendrilCanvas>
       <Layout>
-        <TendrilCanvas ref={oscillatorCanvas}></TendrilCanvas>
         <BodyWrapper>
           <Content>
             <h1>Hey There, </h1>
