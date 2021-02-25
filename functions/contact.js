@@ -13,6 +13,9 @@ exports.handler = function (event, context, callback) {
       text: '<h1>Testing some Mailgun awesomness</h1>'
     },
     (error, response) => {
+      console.error(error);
+      console.log(response);
+
       callback(null, {
         statusCode: 200,
         error: JSON.stringify(error),

@@ -9,7 +9,7 @@ const sendEmail = async (e) => {
     const email = await fetch('/.netlify/functions/contact', {
       method: 'POST'
     });
-    console.log(email);
+    // console.log(email);
   } catch (error) {
     console.error(error);
   }
