@@ -1,8 +1,6 @@
-import Mailgun from 'mailgun.js';
+const Mailgun = require('mailgun.js');
 
 const formData = new FormData();
-// import formData from 'form-data';
-
 const mailgun = new Mailgun(formData);
 const mg = mailgun.client({
   username: 'api',
