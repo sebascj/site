@@ -5,8 +5,6 @@ import styled from 'styled-components';
 
 import Layout from '../components/layout/layout';
 
-import Navigation from '../components/navigation/navigation';
-
 const TendrilCanvas = styled.canvas`
   position: absolute;
   top: 0;
@@ -36,7 +34,6 @@ function HomePage() {
       </Head>
       <Layout>
         <TendrilCanvas ref={oscillatorCanvas}></TendrilCanvas>
-        <Navigation />
         <BodyWrapper>
           <Content>
             <h1>Hey There, </h1>

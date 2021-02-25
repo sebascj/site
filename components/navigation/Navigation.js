@@ -5,7 +5,7 @@ const LeftNavBar = styled.div`
   background-color: #181818;
 `;
 
-const navigation = () => {
+const Navigation = () => {
   return (
     <LeftNavBar>
       <ul>
@@ -29,4 +29,4 @@ const navigation = () => {
   );
 };
 
-export default navigation;
+export default Navigation;

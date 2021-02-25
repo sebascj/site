@@ -12,6 +12,7 @@ exports.handler = function (event, context, callback) {
     text: 'TEXT',
     html: 'HTML'
   };
+
   mg.messages().send(data, (error, response) => {
     if (error) {
       return console.log(error);

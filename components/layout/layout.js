@@ -1,4 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
+
+import Navigation from '../navigation/Navigation';
 const PageStyle = createGlobalStyle`
   html,
   body,
@@ -12,16 +14,21 @@ const PageStyle = createGlobalStyle`
     background-color:#1d1d1d
   }
 `;
-const ContentWrapper = styled.div`
+const PageWrapper = styled.div`
   display: flex;
+`;
+const ContentWrapper = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 const Layout = ({ children }) => {
   return (
-    <ContentWrapper>
+    <PageWrapper>
       <PageStyle />
-      {children}
-    </ContentWrapper>
+      <Navigation />
+      <ContentWrapper>{children}</ContentWrapper>
+    </PageWrapper>
   );
 };
 
