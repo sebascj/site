@@ -9,8 +9,10 @@ const ContactForm = styled.form`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background: #2b2b2b;
+    background: var(--background-gray-light);
     color: #8d8d8d;
+    font-family: 'Open Sans';
+    font-size: 1em;
   }
   input {
     border: none;
@@ -20,6 +22,7 @@ const ContactForm = styled.form`
     resize: vertical;
     height: 200px;
     max-height: 350px;
+    padding: 10px;
   }
 `;
 const NameEmail = styled.div`

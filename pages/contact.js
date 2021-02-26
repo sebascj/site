@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/layout/layout';
-
 import styled from 'styled-components';
-
 import Form from '../components/form/Form';
 
 // const sendEmail = async (e) => {
@@ -21,6 +19,12 @@ const FormWrapper = styled.div`
   max-width: 30rem;
 `;
 
+const Title = styled.h1`
+  font-family: 'Lordida Solid', 'Open Sans';
+  font-size: 3rem;
+  color: var(--orange-yellow);
+`;
+
 function About() {
   return (
     <>
@@ -29,7 +33,7 @@ function About() {
       </Head>
       <Layout>
         <div>
-          <h1>Contact</h1>
+          <Title>Contact me</Title>
         </div>
         <FormWrapper>
           <Form />
