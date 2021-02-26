@@ -18,6 +18,7 @@ div#__next > div {
   height: 100%;
   width: 100%;
   font-family: 'Roboto', 'Open Sans';
+  min-width: 320px;
 }
 body {
   margin: 0;
