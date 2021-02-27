@@ -34,7 +34,7 @@ const MapContainer = styled.div`
 `;
 
 const loader = new Loader({
-  apiKey: process.env.MAPS_API_KEY,
+  apiKey: 'AIzaSyAYTxijlk0ceY0ybd5QUExDRoaZUiAFvPQ',
   version: 'weekly'
 });
 
