@@ -32,5 +32,8 @@
     "react": {
       "version": "detect"
     }
+  },
+  "globals": {
+    "google": true
   }
 }
