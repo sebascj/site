@@ -14,28 +14,31 @@ const MapContainer = styled.div`
   }
 `;
 
-const loader = new Loader({
-  apiKey: 'AIzaSyAYTxijlk0ceY0ybd5QUExDRoaZUiAFvPQ',
-  version: 'weekly'
-});
+const createMap = () => {
+  const location = { lat: 6.146495425771893, lng: -75.626902085216 };
+  const newMap = new google.maps.Map(document.getElementById('google-map'), {
+    center: location,
+    disableDefaultUI: true,
+    zoom: 13,
+    styles: mapConfig.laser
+  });
+  new google.maps.Marker({
+    position: location,
+    map: newMap,
+    title: 'Hello World!'
+  });
+};
 
 const loadMap = () => {
-  loader.load().then(() => {
-    const location = { lat: 6.146495425771893, lng: -75.626902085216 };
-
-    const newMap = new google.maps.Map(document.getElementById('google-map'), {
-      center: location,
-      disableDefaultUI: true,
-      zoom: 13,
-      styles: mapConfig.laser
+  if (!window.google) {
+    const loader = new Loader({
+      apiKey: 'AIzaSyAYTxijlk0ceY0ybd5QUExDRoaZUiAFvPQ',
+      version: 'weekly'
     });
-
-    new google.maps.Marker({
-      position: location,
-      map: newMap,
-      title: 'Hello World!'
-    });
-  });
+    loader.load().then(createMap);
+  } else {
+    createMap();
+  }
 };
 
 const GoogleMap = () => {
