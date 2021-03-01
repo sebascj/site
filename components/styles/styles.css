@@ -1,0 +1,57 @@
+:root {
+  /* Palette WIP */
+  /* --raisin-black: #28262cff; */
+  /* --light-slate-gray: #77878bff; */
+  --orange-yellow: #f3b61fff;
+  --orange-pantone: #f75c03ff;
+  --medium-candy-apple-red: #db162fff;
+
+  /* Gray */
+  --background-gray: #1d1d1d;
+  --background-gray-light: #2b2b2b;
+  --text-gray: #333333;
+
+  /* White */
+  --white: #fff;
+}
+
+html,
+body,
+div#__next,
+div#__next > div {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', 'Open Sans';
+  min-width: 320px;
+}
+body {
+  margin: 0;
+  background-color: var(--white);
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans'),
+    url('./fonts/OpenSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lordida Solid';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/LondrinaSolid-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/Roboto-Medium.ttf') format('truetype');
+}
