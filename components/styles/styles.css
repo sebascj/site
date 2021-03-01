@@ -9,6 +9,10 @@
   /* Gray */
   --background-gray: #1d1d1d;
   --background-gray-light: #2b2b2b;
+  --text-gray: #333333;
+
+  /* White */
+  --white: #fff;
 }
 
 html,
@@ -22,7 +26,7 @@ div#__next > div {
 }
 body {
   margin: 0;
-  background-color: var(--background-gray);
+  background-color: var(--white);
 }
 
 @font-face {
@@ -37,4 +41,17 @@ body {
   font-style: normal;
   font-weight: 400;
   src: url('./fonts/LondrinaSolid-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Roboto-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./fonts/Roboto-Medium.ttf') format('truetype');
 }

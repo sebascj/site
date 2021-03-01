@@ -16,7 +16,7 @@ const BodyWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  color: #fff;
+  color: var(--text-gray);
 `;
 
 function HomePage() {

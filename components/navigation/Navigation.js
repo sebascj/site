@@ -3,6 +3,10 @@ import styled from 'styled-components';
 
 const LeftNavBar = styled.div`
   background-color: #181818;
+
+  @media (max-width: 1300px) {
+    display: none;
+  }
 `;
 
 const Navigation = () => {

@@ -27,15 +27,15 @@ const loop = () => {
   if (!ctx.running) return;
 
   ctx.globalCompositeOperation = 'source-over';
-  ctx.fillStyle = '#1D1D1D';
+  ctx.fillStyle = '#FFF';
   ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.globalCompositeOperation = 'lighter';
+  ctx.globalCompositeOperation = 'new content';
   ctx.lineWidth = 1;
 
   if (color == 1) {
-    ctx.strokeStyle = 'hsla(346,98%,56%,0.25)';
+    ctx.strokeStyle = '#1d1d1d';
   } else {
-    ctx.strokeStyle = 'hsla(171,98%,56%,0.25)';
+    ctx.strokeStyle = '#1d1d1d';
   }
 
   for (let i = 0, tendril; i < defaultSettings.trails; i++) {
