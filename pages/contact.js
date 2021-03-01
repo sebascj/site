@@ -17,11 +17,18 @@ import GoogleMap from '../components/map/GoogleMap';
 // };
 
 const FormWrapper = styled.div`
-  max-width: 30rem;
+  max-width: 740px;
+  flex: 1 0 auto;
+  @media (max-width: 1300px) {
+    max-width: unset;
+  }
 `;
 
 const ContactWrapper = styled.div`
   display: flex;
+  height: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const Title = styled.h1`
@@ -37,12 +44,11 @@ function About() {
         <title>Contact | Sebastian</title>
       </Head>
       <Layout>
-        <div>
-          <Title>Contact me</Title>
-        </div>
-        <FormWrapper>
-          <Form />
-          {/* <form onSubmit={sendEmail}>
+        <ContactWrapper>
+          <FormWrapper>
+            <Title>Contact me</Title>
+            <Form />
+            {/* <form onSubmit={sendEmail}>
             <label htmlFor="name">
               <input
                 id="name"
@@ -51,8 +57,9 @@ function About() {
             </label>
             <button>submit</button>
           </form> */}
-        </FormWrapper>
-        <GoogleMap />
+          </FormWrapper>
+          <GoogleMap />
+        </ContactWrapper>
       </Layout>
     </>
   );

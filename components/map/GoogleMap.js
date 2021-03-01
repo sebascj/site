@@ -4,8 +4,14 @@ import styled from 'styled-components';
 import { mapConfig } from './config';
 
 const MapContainer = styled.div`
-  width: 600px;
-  height: 600px;
+  height: 100%;
+  min-width: 320px;
+  flex: 0 0 50%;
+  @media (max-width: 900px) {
+    width: 100%;
+    margin: 8px;
+    flex: 0 1 auto;
+  }
 `;
 
 const loader = new Loader({
