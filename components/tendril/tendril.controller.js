@@ -66,7 +66,8 @@ const mousemove = (event) => {
     target.x = event.clientX;
     target.y = event.clientY;
   }
-  event.preventDefault();
+  // Unable to cal prevent default: passive issue
+  // event.preventDefault();
 };
 
 const touchstart = (event) => {
@@ -93,9 +94,9 @@ const init = (e) => {
   document.removeEventListener('mousemove', init);
   document.removeEventListener('touchstart', init);
 
-  document.addEventListener('mousemove', mousemove);
-  document.addEventListener('touchmove', mousemove);
-  document.addEventListener('touchstart', touchstart);
+  document.addEventListener('mousemove', mousemove, { passive: true });
+  document.addEventListener('touchmove', mousemove, { passive: true });
+  document.addEventListener('touchstart', touchstart, { passive: true });
 
   resize();
   mousemove(e);
@@ -122,8 +123,8 @@ export default function startTendril(context) {
   ctx = context;
   ctx.running = true;
 
-  document.addEventListener('mousemove', init);
-  document.addEventListener('touchstart', init);
+  document.addEventListener('mousemove', init, { passive: true });
+  document.addEventListener('touchstart', init, { passive: true });
 
   document.body.addEventListener('orientationchange', resize);
   window.addEventListener('resize', resize);

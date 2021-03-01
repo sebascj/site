@@ -18,7 +18,7 @@ import GoogleMap from '../components/map/GoogleMap';
 
 const FormWrapper = styled.div`
   max-width: 740px;
-  flex: 1 0 auto;
+  flex: 1 1 auto;
   @media (max-width: 1300px) {
     max-width: unset;
   }
