@@ -25,11 +25,15 @@ const MobileNavIcon = styled.button`
 `;
 
 const MobileMenu = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 80;
-  background-color: gray;
+  display: none;
+  @media screen and (max-width: 1300px) {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 80;
+    background-color: gray;
+  }
 `;
 
 const Navigation = () => {
@@ -38,22 +42,33 @@ const Navigation = () => {
     e.preventDefault();
     setNav(!showNav);
   };
+  const closeNavMenu = () => {
+    setNav(false);
+  };
   const menu = (
     <ul>
       <li>
         <Link href="/">Home</Link>
       </li>
       <li>
-        <Link href="/about">About</Link>
+        <Link href="/about" passHref>
+          <a onClick={closeNavMenu}>About</a>
+        </Link>
       </li>
       <li>
-        <Link href="/skills">Skills</Link>
+        <Link href="/skills">
+          <a onClick={closeNavMenu}>Skills</a>
+        </Link>
       </li>
       <li>
-        <Link href="/projects">Projects</Link>
+        <Link href="/projects">
+          <a onClick={closeNavMenu}>Projects</a>
+        </Link>
       </li>
       <li>
-        <Link href="/contact">Contact</Link>
+        <Link href="/contact">
+          <a onClick={closeNavMenu}>Contact</a>
+        </Link>
       </li>
     </ul>
   );
