@@ -3,10 +3,37 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 const LeftNavBar = styled.div`
-  background-color: #181818;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  background-color: var(--white);
+  width: 110px;
+  box-shadow: 0 5.3px 24.7px -20px rgba(0, 0, 0, 0.272),
+    0 6.6px 25.2px -20px rgba(0, 0, 0, 0.354),
+    0 15px 60px -20px rgba(0, 0, 0, 0.54);
 
   @media (max-width: 1300px) {
     display: none;
+  }
+`;
+
+const List = styled.ul`
+  padding: 0;
+`;
+
+const ListItem = styled.li`
+  list-style-type: none;
+  text-align: center;
+  &:hover {
+    background-color: var(--silver-gray-light);
+  }
+  a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+  a:visited {
+    color: var(--text-gray);
   }
 `;
 
@@ -46,31 +73,31 @@ const Navigation = () => {
     setNav(false);
   };
   const menu = (
-    <ul>
-      <li>
+    <List>
+      <ListItem>
         <Link href="/">Home</Link>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Link href="/about" passHref>
           <a onClick={closeNavMenu}>About</a>
         </Link>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Link href="/skills">
           <a onClick={closeNavMenu}>Skills</a>
         </Link>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Link href="/projects">
           <a onClick={closeNavMenu}>Projects</a>
         </Link>
-      </li>
-      <li>
+      </ListItem>
+      <ListItem>
         <Link href="/contact">
           <a onClick={closeNavMenu}>Contact</a>
         </Link>
-      </li>
-    </ul>
+      </ListItem>
+    </List>
   );
 
   return (

@@ -9,10 +9,13 @@
   /* Gray */
   --background-gray: #1d1d1d;
   --background-gray-light: #2b2b2b;
-  --text-gray: #333333;
+  --text-gray: #303030;
+  --dark-gray: #a9a9a9;
+  --silver-gray: #c0c0c0;
+  --silver-gray-light: #e8e8e8;
 
   /* White */
-  --white: #fff;
+  --white: #f8f8f8;
 }
 
 html,
