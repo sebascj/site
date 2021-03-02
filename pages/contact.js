@@ -1,8 +1,10 @@
 import Head from 'next/head';
-import Layout from '../components/layout/layout';
 import styled from 'styled-components';
+
+import Layout from '../components/layout/layout';
 import Form from '../components/form/Form';
 import GoogleMap from '../components/map/GoogleMap';
+import { Title } from '../components/font-elements/Fonts';
 
 // const sendEmail = async (e) => {
 //   e.preventDefault();
@@ -29,12 +31,6 @@ const ContactWrapper = styled.div`
   height: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
-`;
-
-const Title = styled.h1`
-  font-family: 'Roboto', 'Open Sans';
-  font-size: 3rem;
-  color: var(--text-gray);
 `;
 
 function About() {

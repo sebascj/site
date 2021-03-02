@@ -11,7 +11,7 @@ const ContactForm = styled.form`
     box-sizing: border-box;
     background: var(--background-gray-light);
     color: #8d8d8d;
-    font-family: 'Open Sans';
+    font-family: 'Hind Vadodara';
     font-size: 1em;
   }
   input {

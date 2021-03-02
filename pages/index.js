@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import { useEffect, useRef } from 'react';
-import tendril from '../components/tendril/tendril.controller';
 import styled from 'styled-components';
 
+import tendril from '../components/tendril/tendril.controller';
 import Layout from '../components/layout/layout';
+import { Title, Subtitle, Paragraph } from '../components/font-elements/Fonts';
 
 const TendrilCanvas = styled.canvas`
   position: absolute;
@@ -15,9 +16,7 @@ const BodyWrapper = styled.div`
   position: relative;
 `;
 
-const Content = styled.div`
-  color: var(--text-gray);
-`;
+const Content = styled.div``;
 
 function HomePage() {
   const oscillatorCanvas = useRef();
@@ -36,10 +35,10 @@ function HomePage() {
       <Layout>
         <BodyWrapper>
           <Content>
-            <h1>Hey There, I’m Sebastian</h1>
-            <h2>Frontend developer based in Medellín, Colombia.</h2>
-            <h2>This is work in progress home page</h2>
-            <h3>Currently using NextJS</h3>
+            <Title>Hey There, I’m Sebastian</Title>
+            <Subtitle>Frontend developer based in Medellín, Colombia.</Subtitle>
+            <Subtitle>This is work in progress home page</Subtitle>
+            <Paragraph>Currently using NextJS</Paragraph>
           </Content>
         </BodyWrapper>
       </Layout>

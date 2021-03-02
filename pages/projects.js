@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/layout/layout';
+import { Title } from '../components/font-elements/Fonts';
 
 function About() {
   return (
@@ -8,9 +9,7 @@ function About() {
         <title>Projects | Sebastian</title>
       </Head>
       <Layout>
-        <div>
-          <h1>Projects</h1>
-        </div>
+        <Title>Projects</Title>
       </Layout>
     </>
   );
