@@ -24,16 +24,18 @@ const List = styled.ul`
 const ListItem = styled.li`
   list-style-type: none;
   text-align: center;
-  &:hover {
-    background-color: var(--silver-gray-light);
+  a:visited {
+    color: inherit;
+  }
+  a:hover {
+    background: var(--silver-gray-light);
+    color: var(--theme-red);
   }
   a {
+    color: var(--text-gray);
     display: block;
     padding: 12px;
     text-decoration: none;
-  }
-  a:visited {
-    color: var(--text-gray);
   }
 `;
 
