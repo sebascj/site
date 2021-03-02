@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const LeftNavBar = styled.div`
   display: flex;
@@ -67,6 +67,7 @@ const MobileMenu = styled.div`
 
 const Navigation = () => {
   const [showNav, setNav] = useState(false);
+  const [loading, setLoading] = useState(false);
   const toggleMobileNavMenu = (e) => {
     e.preventDefault();
     setNav(!showNav);
@@ -101,27 +102,33 @@ const Navigation = () => {
       </ListItem>
     </List>
   );
+  const menuIcon = (
+    <svg
+      aria-hidden="true"
+      focusable="false"
+      data-prefix="far"
+      data-icon="bars"
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 448 512"
+      className="svg-inline--fa fa-bars fa-w-14 fa-3x">
+      <path
+        fill="currentColor"
+        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
+        className=""></path>
+    </svg>
+  );
+  useEffect(() => {
+    setLoading(true);
+  }, []);
 
   return (
     <>
-      <MobileNavIcon onClick={toggleMobileNavMenu}>
-        <svg
-          aria-hidden="true"
-          focusable="false"
-          data-prefix="far"
-          data-icon="bars"
-          role="img"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512"
-          className="svg-inline--fa fa-bars fa-w-14 fa-3x">
-          <path
-            fill="currentColor"
-            d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-            className=""></path>
-        </svg>
-      </MobileNavIcon>
+      {loading && (
+        <MobileNavIcon onClick={toggleMobileNavMenu}>{menuIcon}</MobileNavIcon>
+      )}
       {showNav && <MobileMenu>{menu}</MobileMenu>}
-      <LeftNavBar>{menu}</LeftNavBar>
+      {loading && <LeftNavBar>{menu}</LeftNavBar>}
     </>
   );
 };
