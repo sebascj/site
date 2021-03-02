@@ -36,7 +36,8 @@ function HomePage() {
       <Layout>
         <BodyWrapper>
           <Content>
-            <h1>Hey There, </h1>
+            <h1>Hey There, I’m Sebastian</h1>
+            <h2>Frontend developer based in Medellín, Colombia.</h2>
             <h2>This is work in progress home page</h2>
             <h3>Currently using NextJS</h3>
           </Content>
