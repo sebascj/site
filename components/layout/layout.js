@@ -7,6 +7,7 @@ const PageWrapper = styled.div`
 const ContentWrapper = styled.div`
   width: 100%;
   height: 100%;
+  margin: 10px;
 `;
 
 const Layout = ({ children }) => {
