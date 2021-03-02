@@ -25,11 +25,15 @@ const MobileNavIcon = styled.button`
 `;
 
 const MobileMenu = styled.div`
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 80;
-  background-color: gray;
+  display: none;
+  @media screen and (max-width: 1300px) {
+    display: block;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 80;
+    background-color: gray;
+  }
 `;
 
 const Navigation = () => {
