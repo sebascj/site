@@ -67,7 +67,7 @@ const MobileMenu = styled.div`
 
 const Navigation = () => {
   const [showNav, setNav] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const toggleMobileNavMenu = (e) => {
     e.preventDefault();
     setNav(!showNav);
@@ -119,16 +119,16 @@ const Navigation = () => {
     </svg>
   );
   useEffect(() => {
-    setLoading(true);
+    setLoading(false);
   }, []);
 
   return (
     <>
-      {loading && (
+      {!loading && (
         <MobileNavIcon onClick={toggleMobileNavMenu}>{menuIcon}</MobileNavIcon>
       )}
       {showNav && <MobileMenu>{menu}</MobileMenu>}
-      {loading && <LeftNavBar>{menu}</LeftNavBar>}
+      {<LeftNavBar>{!loading && menu}</LeftNavBar>}
     </>
   );
 };
