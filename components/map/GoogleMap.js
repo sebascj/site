@@ -15,16 +15,18 @@ const MapContainer = styled.div`
 `;
 
 const createMap = () => {
-  const location = { lat: 6.146495425771893, lng: -75.626902085216 };
+  const location = { lat: 6.2041, lng: -75.5708 };
   const newMap = new google.maps.Map(document.getElementById('google-map'), {
     center: location,
     disableDefaultUI: true,
-    zoom: 13,
-    styles: mapConfig.laser
+    zoom: 15,
+    styles: mapConfig.white
   });
   new google.maps.Marker({
     position: location,
     map: newMap,
+    animation: google.maps.Animation.DROP,
+    // icon: image,
     title: 'Hello World!'
   });
 };

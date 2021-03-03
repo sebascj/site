@@ -1,7 +1,7 @@
 const mapConfig = {
-  laser: [
+  white: [
     {
-      featureType: 'administrative',
+      featureType: 'administrative.province',
       elementType: 'all',
       stylers: [
         {
@@ -10,29 +10,56 @@ const mapConfig = {
       ]
     },
     {
-      featureType: 'administrative',
+      featureType: 'administrative.locality',
       elementType: 'labels',
       stylers: [
         {
+          lightness: '-8'
+        }
+      ]
+    },
+    {
+      featureType: 'administrative.locality',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          color: '#000000'
+        }
+      ]
+    },
+    {
+      featureType: 'administrative.locality',
+      elementType: 'labels.text.stroke',
+      stylers: [
+        {
           visibility: 'off'
         }
       ]
     },
     {
-      featureType: 'administrative',
-      elementType: 'labels.text.fill',
+      featureType: 'administrative.neighborhood',
+      elementType: 'all',
       stylers: [
         {
-          color: '#444444'
+          color: '#acacac'
         }
       ]
     },
     {
-      featureType: 'landscape',
-      elementType: 'all',
+      featureType: 'administrative.neighborhood',
+      elementType: 'labels.text.fill',
       stylers: [
         {
-          color: '#fffdfd'
+          color: '#484848'
+        }
+      ]
+    },
+    {
+      featureType: 'administrative.neighborhood',
+      elementType: 'labels.text.stroke',
+      stylers: [
+        {
+          color: '#ff0000'
         },
         {
           visibility: 'off'
@@ -40,18 +67,24 @@ const mapConfig = {
       ]
     },
     {
-      featureType: 'landscape',
-      elementType: 'geometry.fill',
+      featureType: 'administrative.land_parcel',
+      elementType: 'all',
       stylers: [
         {
-          visibility: 'on'
+          lightness: '-3'
         }
       ]
     },
     {
       featureType: 'landscape',
-      elementType: 'geometry.stroke',
+      elementType: 'all',
       stylers: [
+        {
+          saturation: -100
+        },
+        {
+          lightness: '72'
+        },
         {
           visibility: 'on'
         }
@@ -62,7 +95,7 @@ const mapConfig = {
       elementType: 'labels',
       stylers: [
         {
-          visibility: 'off'
+          lightness: '23'
         }
       ]
     },
@@ -71,7 +104,7 @@ const mapConfig = {
       elementType: 'all',
       stylers: [
         {
-          visibility: 'off'
+          visibility: 'on'
         }
       ]
     },
@@ -89,7 +122,7 @@ const mapConfig = {
       elementType: 'labels',
       stylers: [
         {
-          visibility: 'off'
+          visibility: 'on'
         }
       ]
     },
@@ -98,7 +131,22 @@ const mapConfig = {
       elementType: 'labels.icon',
       stylers: [
         {
-          visibility: 'off'
+          visibility: 'on'
+        },
+        {
+          color: '#ff6a4d'
+        }
+      ]
+    },
+    {
+      featureType: 'poi',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          visibility: 'on'
+        },
+        {
+          lightness: '-100'
         }
       ]
     },
@@ -107,31 +155,19 @@ const mapConfig = {
       elementType: 'all',
       stylers: [
         {
-          saturation: -100
-        },
-        {
-          lightness: 45
-        },
-        {
-          visibility: 'on'
-        },
-        {
-          weight: '3.28'
+          lightness: '-19'
         }
       ]
     },
     {
       featureType: 'road',
-      elementType: 'geometry.fill',
+      elementType: 'geometry',
       stylers: [
         {
-          visibility: 'on'
+          lightness: '2'
         },
         {
-          color: '#000000'
-        },
-        {
-          weight: '4.00'
+          gamma: '1.21'
         }
       ]
     },
@@ -140,10 +176,13 @@ const mapConfig = {
       elementType: 'geometry.stroke',
       stylers: [
         {
-          color: '#fffefe'
+          visibility: 'off'
         },
         {
-          weight: '2.00'
+          saturation: '15'
+        },
+        {
+          hue: '#ff0000'
         }
       ]
     },
@@ -152,7 +191,19 @@ const mapConfig = {
       elementType: 'labels',
       stylers: [
         {
-          visibility: 'off'
+          lightness: '-43'
+        }
+      ]
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.text',
+      stylers: [
+        {
+          visibility: 'on'
+        },
+        {
+          lightness: '22'
         }
       ]
     },
@@ -161,10 +212,13 @@ const mapConfig = {
       elementType: 'labels.text.fill',
       stylers: [
         {
-          weight: '1.03'
+          weight: '0.12'
         },
         {
-          visibility: 'off'
+          lightness: '-23'
+        },
+        {
+          visibility: 'on'
         }
       ]
     },
@@ -173,7 +227,19 @@ const mapConfig = {
       elementType: 'labels.text.stroke',
       stylers: [
         {
-          weight: '1.07'
+          visibility: 'off'
+        },
+        {
+          lightness: '71'
+        }
+      ]
+    },
+    {
+      featureType: 'road',
+      elementType: 'labels.icon',
+      stylers: [
+        {
+          visibility: 'on'
         }
       ]
     },
@@ -181,6 +247,9 @@ const mapConfig = {
       featureType: 'road.highway',
       elementType: 'all',
       stylers: [
+        {
+          saturation: -100
+        },
         {
           visibility: 'simplified'
         }
@@ -188,76 +257,43 @@ const mapConfig = {
     },
     {
       featureType: 'road.highway',
-      elementType: 'geometry.fill',
-      stylers: [
-        {
-          weight: '5'
-        }
-      ]
-    },
-    {
-      featureType: 'road.highway',
-      elementType: 'geometry.stroke',
-      stylers: [
-        {
-          weight: '2'
-        }
-      ]
-    },
-    {
-      featureType: 'road.highway',
-      elementType: 'labels',
-      stylers: [
-        {
-          visibility: 'off'
-        }
-      ]
-    },
-    {
-      featureType: 'road.arterial',
-      elementType: 'geometry.fill',
-      stylers: [
-        {
-          weight: '3'
-        }
-      ]
-    },
-    {
-      featureType: 'road.arterial',
-      elementType: 'labels.icon',
-      stylers: [
-        {
-          visibility: 'off'
-        }
-      ]
-    },
-    {
-      featureType: 'road.local',
       elementType: 'geometry',
       stylers: [
         {
-          visibility: 'on'
+          color: '#ff6a4d'
         },
         {
-          weight: '1.00'
+          lightness: '-7'
+        }
+      ]
+    },
+    {
+      featureType: 'road.arterial',
+      elementType: 'all',
+      stylers: [
+        {
+          saturation: -100
+        },
+        {
+          lightness: 30
+        },
+        {
+          visibility: 'on'
         }
       ]
     },
     {
       featureType: 'road.local',
-      elementType: 'geometry.fill',
+      elementType: 'all',
       stylers: [
         {
-          weight: '2'
-        }
-      ]
-    },
-    {
-      featureType: 'road.local',
-      elementType: 'labels',
-      stylers: [
+          saturation: -100
+        },
         {
-          visibility: 'off'
+          lightness: 40
+        },
+        {
+          visibility: 'on'
         }
       ]
     },
@@ -266,16 +302,10 @@ const mapConfig = {
       elementType: 'all',
       stylers: [
         {
-          visibility: 'off'
-        }
-      ]
-    },
-    {
-      featureType: 'transit',
-      elementType: 'geometry',
-      stylers: [
+          saturation: -100
+        },
         {
-          visibility: 'on'
+          visibility: 'simplified'
         }
       ]
     },
@@ -284,43 +314,13 @@ const mapConfig = {
       elementType: 'geometry.fill',
       stylers: [
         {
-          color: '#000000'
-        },
-        {
-          weight: '2.00'
-        }
-      ]
-    },
-    {
-      featureType: 'transit',
-      elementType: 'geometry.stroke',
-      stylers: [
-        {
-          weight: '2.00'
-        },
-        {
-          color: '#000000'
-        }
-      ]
-    },
-    {
-      featureType: 'transit',
-      elementType: 'labels',
-      stylers: [
-        {
-          visibility: 'off'
-        }
-      ]
-    },
-    {
-      featureType: 'water',
-      elementType: 'all',
-      stylers: [
-        {
-          color: '#46bcec'
+          saturation: '5'
         },
         {
           visibility: 'on'
+        },
+        {
+          lightness: '5'
         }
       ]
     },
@@ -329,7 +329,25 @@ const mapConfig = {
       elementType: 'geometry',
       stylers: [
         {
-          color: '#020202'
+          hue: '#ffff00'
+        },
+        {
+          lightness: '-24'
+        },
+        {
+          saturation: -97
+        }
+      ]
+    },
+    {
+      featureType: 'water',
+      elementType: 'geometry.fill',
+      stylers: [
+        {
+          saturation: '-88'
+        },
+        {
+          lightness: '-23'
         },
         {
           visibility: 'on'
@@ -338,22 +356,16 @@ const mapConfig = {
     },
     {
       featureType: 'water',
-      elementType: 'geometry.stroke',
-      stylers: [
-        {
-          visibility: 'off'
-        }
-      ]
-    },
-    {
-      featureType: 'water',
       elementType: 'labels',
       stylers: [
         {
-          visibility: 'off'
+          visibility: 'on'
         },
         {
-          color: '#ff0000'
+          lightness: -25
+        },
+        {
+          saturation: -100
         }
       ]
     },
@@ -362,7 +374,22 @@ const mapConfig = {
       elementType: 'labels.text',
       stylers: [
         {
-          visibility: 'off'
+          weight: '0.01'
+        },
+        {
+          lightness: '9'
+        }
+      ]
+    },
+    {
+      featureType: 'water',
+      elementType: 'labels.text.fill',
+      stylers: [
+        {
+          lightness: '-32'
+        },
+        {
+          gamma: '2.99'
         }
       ]
     }
