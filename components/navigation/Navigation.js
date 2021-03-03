@@ -2,7 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import menuIcon from '../styles/icons/mobileNavIcon';
+import MenuIcon from '../styles/icons/mobile-icon.svg';
 
 const LeftNavBar = styled.div`
   display: flex;
@@ -53,7 +53,8 @@ const MobileNavIcon = styled.button`
   border: none;
   background: unset;
   @media screen and (max-width: 1300px) {
-    width: 50px;
+    color: var(--theme-red);
+    width: 70px;
     position: fixed;
     right: 10px;
     top: 10px;
@@ -122,7 +123,9 @@ const Navigation = () => {
   return (
     <>
       {!loading && (
-        <MobileNavIcon onClick={toggleMobileNavMenu}>{menuIcon}</MobileNavIcon>
+        <MobileNavIcon onClick={toggleMobileNavMenu}>
+          <MenuIcon />
+        </MobileNavIcon>
       )}
       {showNav && <MobileMenu>{menu}</MobileMenu>}
       {<LeftNavBar>{!loading && menu}</LeftNavBar>}
