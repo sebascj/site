@@ -40,8 +40,10 @@ const loop = () => {
 
   for (let i = 0, tendril; i < defaultSettings.trails; i++) {
     tendril = tendrils[i];
-    tendril.update(target.x, target.y);
-    tendril.draw(ctx);
+    if (tendril) {
+      tendril.update(target.x, target.y);
+      tendril.draw(ctx);
+    }
   }
 
   animationFrame = requestAnimationFrame(loop);

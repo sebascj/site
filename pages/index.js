@@ -16,17 +16,24 @@ const TendrilCanvas = styled.canvas`
   }
 `;
 
+const SubtitleMobile = styled(Subtitle)`
+  @media (max-width: 900px) {
+    text-align: center;
+  }
+`;
+
 const Content = styled.div`
   display: flex;
   flex-flow: column;
-  justify-content: center;
-  height: 100%;
+  @media (max-width: 900px) {
+    align-items: center;
+  }
 `;
 
 const Contact = styled.div`
   border: 1px solid var(--theme-red);
   text-align: center;
-  max-width: 220px;
+  width: 220px;
   height: 50px;
   a {
     display: block;
@@ -63,12 +70,15 @@ function HomePage() {
       <TendrilCanvas ref={oscillatorCanvas}></TendrilCanvas>
       <Layout>
         <Content>
-          <Title>Hey There, I’m Sebastian</Title>
-          <Subtitle>
+          <Title>
+            Hi,
+            <br /> I’m Sebastian
+          </Title>
+          <SubtitleMobile>
             Frontend developer based in Medellín, Colombia.
             <br />
-            This is work in progress home page
-          </Subtitle>
+            This is work in progress web page
+          </SubtitleMobile>
           <Paragraph>Currently using NextJS</Paragraph>
           <Contact>
             <Link href="/contact">Contact me</Link>
