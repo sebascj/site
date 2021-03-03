@@ -1,7 +1,6 @@
 import Tendril from '../tendril/tendril.model';
 
 let ctx,
-  color,
   target = {},
   tendrils = [],
   animationFrame;
@@ -19,24 +18,15 @@ const resize = () => {
   ctx.canvas.height = window.innerHeight;
 };
 
-const randomIntFromInterval = (min, max) => {
-  return Math.floor(Math.random() * (max - min + 1) + min);
-};
-
 const loop = () => {
   if (!ctx.running) return;
 
   ctx.globalCompositeOperation = 'source-over';
-  ctx.fillStyle = '#FFF';
+  ctx.fillStyle = '#f8f8f8';
   ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   ctx.globalCompositeOperation = 'new content';
   ctx.lineWidth = 1;
-
-  if (color == 1) {
-    ctx.strokeStyle = '#1d1d1d';
-  } else {
-    ctx.strokeStyle = '#1d1d1d';
-  }
+  ctx.strokeStyle = '#ff3a22';
 
   for (let i = 0, tendril; i < defaultSettings.trails; i++) {
     tendril = tendrils[i];
@@ -52,7 +42,7 @@ const loop = () => {
 const startAnimation = () => {
   if (!ctx.running) {
     ctx.running = true;
-    loop(ctx, color);
+    loop(ctx);
   }
 };
 
@@ -103,7 +93,7 @@ const init = (e) => {
   resize();
   mousemove(e);
   reset(target.x, target.y);
-  loop(ctx, color);
+  loop(ctx);
 };
 
 const stopTendril = () => {
@@ -121,7 +111,6 @@ const stopTendril = () => {
 };
 
 export default function startTendril(context) {
-  color = randomIntFromInterval(1, 2);
   ctx = context;
   ctx.running = true;
 

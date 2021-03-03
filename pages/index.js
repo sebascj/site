@@ -25,6 +25,10 @@ const SubtitleMobile = styled(Subtitle)`
 const Content = styled.div`
   display: flex;
   flex-flow: column;
+  height: 100vh;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 20px;
   @media (max-width: 900px) {
     align-items: center;
   }
