@@ -30,7 +30,10 @@ const Content = styled.div`
   box-sizing: border-box;
   padding: 20px;
   @media (max-width: 900px) {
+    height: unset;
     align-items: center;
+    margin-top: 5rem;
+    padding-bottom: 0;
   }
 `;
 
