@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 
 import tendril from '../components/tendril/tendril.controller';
 import Layout from '../components/layout/layout';
@@ -10,13 +11,41 @@ const TendrilCanvas = styled.canvas`
   position: absolute;
   top: 0;
   z-index: -1;
+  @media (max-width: 1300px) {
+    display: none;
+  }
 `;
 
-const BodyWrapper = styled.div`
-  position: relative;
+const Content = styled.div`
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  height: 100%;
 `;
 
-const Content = styled.div``;
+const Contact = styled.div`
+  border: 1px solid var(--theme-red);
+  text-align: center;
+  max-width: 220px;
+  height: 50px;
+  a {
+    display: block;
+    font-family: 'Hind Vadodara';
+    background: none;
+    color: var(--theme-red);
+    line-height: 50px;
+    text-decoration: none;
+
+    &:visited {
+      color: var(--theme-red);
+    }
+    &:hover {
+      background-color: var(--theme-red);
+      color: var(--white);
+      transition: 0.3s ease-out all;
+    }
+  }
+`;
 
 function HomePage() {
   const oscillatorCanvas = useRef();
@@ -33,14 +62,18 @@ function HomePage() {
       </Head>
       <TendrilCanvas ref={oscillatorCanvas}></TendrilCanvas>
       <Layout>
-        <BodyWrapper>
-          <Content>
-            <Title>Hey There, I’m Sebastian</Title>
-            <Subtitle>Frontend developer based in Medellín, Colombia.</Subtitle>
-            <Subtitle>This is work in progress home page</Subtitle>
-            <Paragraph>Currently using NextJS</Paragraph>
-          </Content>
-        </BodyWrapper>
+        <Content>
+          <Title>Hey There, I’m Sebastian</Title>
+          <Subtitle>
+            Frontend developer based in Medellín, Colombia.
+            <br />
+            This is work in progress home page
+          </Subtitle>
+          <Paragraph>Currently using NextJS</Paragraph>
+          <Contact>
+            <Link href="/contact">Contact me</Link>
+          </Contact>
+        </Content>
       </Layout>
     </>
   );

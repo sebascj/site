@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import menuIcon from '../styles/icons/mobileNavIcon';
 
 const LeftNavBar = styled.div`
   display: flex;
@@ -18,12 +20,20 @@ const LeftNavBar = styled.div`
 `;
 
 const List = styled.ul`
+  width: 100%;
   padding: 0;
 `;
 
 const ListItem = styled.li`
   list-style-type: none;
   text-align: center;
+  a {
+    font-family: 'Hind Vadodara';
+    color: var(--text-gray);
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
   a:visited {
     color: inherit;
   }
@@ -31,11 +41,10 @@ const ListItem = styled.li`
     background: var(--silver-gray-light);
     color: var(--theme-red);
   }
-  a {
-    color: var(--text-gray);
-    display: block;
-    padding: 12px;
-    text-decoration: none;
+  @media screen and (max-width: 1300px) {
+    a {
+      font-size: 2rem;
+    }
   }
 `;
 
@@ -56,25 +65,27 @@ const MobileNavIcon = styled.button`
 const MobileMenu = styled.div`
   display: none;
   @media screen and (max-width: 1300px) {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     width: 100%;
     height: 100%;
     z-index: 80;
-    background-color: gray;
+    background-color: var(--white);
   }
 `;
 
 const Navigation = () => {
   const [showNav, setNav] = useState(false);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
   const toggleMobileNavMenu = (e) => {
     e.preventDefault();
     setNav(!showNav);
   };
-  const closeNavMenu = () => {
-    setNav(false);
-  };
+
   const menu = (
     <List>
       <ListItem>
@@ -82,45 +93,31 @@ const Navigation = () => {
       </ListItem>
       <ListItem>
         <Link href="/about" passHref>
-          <a onClick={closeNavMenu}>About</a>
+          About
         </Link>
       </ListItem>
       <ListItem>
-        <Link href="/skills">
-          <a onClick={closeNavMenu}>Skills</a>
-        </Link>
+        <Link href="/skills">Skills</Link>
       </ListItem>
       <ListItem>
-        <Link href="/projects">
-          <a onClick={closeNavMenu}>Projects</a>
-        </Link>
+        <Link href="/projects">Projects</Link>
       </ListItem>
       <ListItem>
-        <Link href="/contact">
-          <a onClick={closeNavMenu}>Contact</a>
-        </Link>
+        <Link href="/contact">Contact</Link>
       </ListItem>
     </List>
   );
-  const menuIcon = (
-    <svg
-      aria-hidden="true"
-      focusable="false"
-      data-prefix="far"
-      data-icon="bars"
-      role="img"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 448 512"
-      className="svg-inline--fa fa-bars fa-w-14 fa-3x">
-      <path
-        fill="currentColor"
-        d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"
-        className=""></path>
-    </svg>
-  );
+
   useEffect(() => {
     setLoading(false);
-  }, []);
+    const handleRouteChange = () => {
+      setNav(false);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
     <>
