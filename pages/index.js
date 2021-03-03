@@ -10,6 +10,9 @@ const TendrilCanvas = styled.canvas`
   position: absolute;
   top: 0;
   z-index: -1;
+  @media (max-width: 1300px) {
+    display: none;
+  }
 `;
 
 const BodyWrapper = styled.div`
