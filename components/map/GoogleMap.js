@@ -26,7 +26,7 @@ const createMap = () => {
     position: location,
     map: newMap,
     animation: google.maps.Animation.DROP,
-    // icon: image,
+    icon: '/assets/marker.png',
     title: 'Hello World!'
   });
 };
