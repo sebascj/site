@@ -71,7 +71,8 @@ const MobileMenu = styled.div`
     align-items: center;
     position: fixed;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
     z-index: 80;
     background-color: var(--white);
   }
