@@ -7,6 +7,7 @@ import { Title, Paragraph } from '../components/font-elements/Fonts';
 const AboutContent = styled.div`
   display: flex;
   justify-content: center;
+  margin: 0 20px;
 `;
 
 const AboutArticle = styled.article`
@@ -28,9 +29,9 @@ function About() {
         <title>About | Sebastian</title>
       </Head>
       <Layout>
-        <div>
-          <Title> About</Title>
-          <AboutContent>
+        <AboutContent>
+          <div>
+            <Title> About</Title>
             <AboutArticle>
               <Paragraph>
                 My name is Sebastian Clavijo, and I am a frontend developer at
@@ -63,8 +64,8 @@ function About() {
                 <br />A book I liked: Shutter Island
               </Paragraph>
             </AboutArticle>
-          </AboutContent>
-        </div>
+          </div>
+        </AboutContent>
       </Layout>
     </>
   );
