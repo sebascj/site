@@ -55,3 +55,12 @@ body {
   font-weight: 300;
   src: url('./fonts/Roboto-Light.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'WebIcon';
+  src: url('./fonts/sc-webfonts.ttf') format('truetype'),
+    url('./fonts/sc-webfonts.woff') format('woff'),
+    url('./fonts/sc-webfonts.svg') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
