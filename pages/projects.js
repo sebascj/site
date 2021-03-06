@@ -35,12 +35,15 @@ const NodeText = styled.div`
 `;
 
 const createNode = (props) => {
-  const { name, text } = props;
+  const { name, text, styles } = props;
+
+  const customStyles = `font-size:3em; ${styles ? styles : ''}`;
+
   const CustomNode = (props) => {
     const { inputs } = props;
     return (
       <NodeBox>
-        <Icon name={name} styles={'color: #01ad9f; font-size:2em'} />
+        <Icon name={name} styles={customStyles} />
         {text && <NodeText>{text}</NodeText>}
         <div>
           {inputs.map((port) =>
@@ -77,7 +80,7 @@ const getInitialState = () => {
       {
         id: 'node-4',
         coordinates: [400, 200],
-        render: createNode({ name: 'js' })
+        render: createNode({ name: 'js', styles: 'background: #FFF;' })
       },
       {
         id: 'node-5',
@@ -92,7 +95,7 @@ const getInitialState = () => {
       {
         id: 'node-7',
         coordinates: [400, 500],
-        render: createNode({ name: 'styled' })
+        render: createNode({ name: 'styled', styles: 'font-size: 4em;' })
       },
       {
         id: 'node-9',

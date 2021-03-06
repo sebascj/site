@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import unicodes from './icon-code';
 
 const IconComponent = styled.span(
-  ({ name, custom }) => `
+  ({ content, color, custom }) => `
     &:before {
       font-family: "WebIcon";
-      content: "${name}";
+      content: "${content}";
+      color: ${color};
       ${custom}
     }
   `
@@ -13,8 +14,8 @@ const IconComponent = styled.span(
 
 const Icon = (props) => {
   const { name, styles } = props;
-  const iconName = unicodes[name] || '';
-  return <IconComponent name={iconName} custom={styles} />;
+  const { code, color } = unicodes[name];
+  return <IconComponent content={code} color={color} custom={styles} />;
 };
 
 export default Icon;
