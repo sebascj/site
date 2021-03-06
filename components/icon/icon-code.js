@@ -1,5 +1,5 @@
 const unicodes = {
-  css3: '\\e900',
+  css: '\\e900',
   debian: '\\e901',
   docker: '\\e902',
   git: '\\e903',
@@ -12,6 +12,11 @@ const unicodes = {
   react: '\\e90a',
   twitter: '\\e90d',
   windows: '\\e90b',
-  menu: '\\e90c'
+  menu: '\\e90c',
+  styled: '\\e90e',
+  maps: '\\e910',
+  vscode: '\\e911',
+  analytics: '\\e90f',
+  mailgun: '\\e912'
 };
 export default unicodes;
