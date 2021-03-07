@@ -20,7 +20,7 @@ const diagramSizes = {
     diagramWidth: 49 * 6
   },
   landscape: {
-  offsetY: 50,
+    offsetY: 50,
     distanceX: 150,
     distanceY: 190,
     diagramWidth: 110 * 6
@@ -29,7 +29,7 @@ const diagramSizes = {
     offsetY: 50,
     distanceX: 150,
     distanceY: 190,
-    diagramWidth: 130 * 6
+    diagramWidth: 115 * 6
   }
 };
 
@@ -122,9 +122,7 @@ const hydrateState = (state, display, width) => {
     const newCoordinates = coordinatesCopy.filter((coordinatesNode) => {
       return coordinatesNode.id === node.id;
     })[0].coordinates;
-
-    newCoordinates[0] =
-      newCoordinates[0] + (width - 40 - diagram.diagramWidth) / 2;
+    newCoordinates[0] = newCoordinates[0] + (width - diagram.diagramWidth) / 2;
     newCoordinates[1] = newCoordinates[1] + diagram.offsetY;
     return Object.assign({}, node, { coordinates: newCoordinates });
   });
@@ -245,20 +243,40 @@ const initialSchema = createSchema(getInitialState('screen', 1300));
 
 const UncontrolledDiagram = () => {
   const width = useRef(0);
+  const diagramParent = useRef(null);
   const [schema, { onChange }] = useSchema(initialSchema);
-  const windowResize = useRef(() => {
+  const windowResize = useRef((parent) => {
+    const parentWidth = parent.current.offsetWidth;
     width.current = window.innerWidth;
     if (width.current >= 1300) {
-      reset('screen');
+      reset('screen', parentWidth);
     } else if (width.current >= 600) {
-      reset('landscape');
+      reset('landscape', parentWidth);
     } else {
-      reset('mobile');
+      reset('mobile', parentWidth);
     }
   });
 
-  const reset = (display) => {
-    onChange(Object.assign(getInitialState(display, width.current)));
+  const reset = (display, parentWidth) => {
+    let displayOffset = '';
+    switch (display) {
+      case 'screen':
+        displayOffset =
+          diagramSizes.screen.diagramWidth > parentWidth
+            ? 'landscape'
+            : 'screen';
+        break;
+      case 'landscape':
+        displayOffset =
+          diagramSizes.landscape.diagramWidth > parentWidth
+            ? 'mobile'
+            : 'landscape';
+        break;
+      case 'mobile':
+        displayOffset = display;
+        break;
+    }
+    onChange(Object.assign(getInitialState(displayOffset, parentWidth)));
   };
 
   const getCoordinates = (_ref) => {
@@ -280,18 +298,18 @@ const UncontrolledDiagram = () => {
    */
 
   useEffect(() => {
-    const cb = (e) => {
-      windowResize.current(e);
+    const onWindowResize = () => {
+      windowResize.current(diagramParent);
     };
-    window.addEventListener('resize', cb);
-    windowResize.current();
+    window.addEventListener('resize', onWindowResize);
+    onWindowResize();
     return () => {
-      window.removeEventListener('resize', cb);
+      window.removeEventListener('resize', onWindowResize);
     };
   }, []);
 
   return (
-    <DiagramWrapper>
+    <DiagramWrapper ref={diagramParent}>
       {/* <button onClick={reset}>Reset</button> */}
       <Diagram schema={schema} onChange={getCoordinates} />
     </DiagramWrapper>
