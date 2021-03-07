@@ -118,7 +118,7 @@ const hydrateState = (state, display, width) => {
     diagramWidth: diagramSizes[display].diagramWidth
   };
   const coordinatesCopy = getCoordinates(diagram);
-  const hidratedNodes = nodes.map((node) => {
+  const hydratedNodes = nodes.map((node) => {
     const newCoordinates = coordinatesCopy.filter((coordinatesNode) => {
       return coordinatesNode.id === node.id;
     })[0].coordinates;
@@ -126,7 +126,7 @@ const hydrateState = (state, display, width) => {
     newCoordinates[1] = newCoordinates[1] + diagram.offsetY;
     return Object.assign({}, node, { coordinates: newCoordinates });
   });
-  return { nodes: hidratedNodes, links };
+  return { nodes: hydratedNodes, links };
 };
 
 const getInitialState = (display, width) => {
@@ -236,15 +236,13 @@ const getInitialState = (display, width) => {
       }
     ]
   };
-  return hydrateState(initialState, display, width);
+  return createSchema(hydrateState(initialState, display, width));
 };
-
-const initialSchema = createSchema(getInitialState('screen', 1300));
 
 const UncontrolledDiagram = () => {
   const width = useRef(0);
   const diagramParent = useRef(null);
-  const [schema, { onChange }] = useSchema(initialSchema);
+  const [schema, { onChange }] = useSchema();
   const windowResize = useRef((parent) => {
     const parentWidth = parent.current.offsetWidth;
     width.current = window.innerWidth;
@@ -276,7 +274,9 @@ const UncontrolledDiagram = () => {
         displayOffset = display;
         break;
     }
-    onChange(Object.assign(getInitialState(displayOffset, parentWidth)));
+    const initialState = getInitialState(displayOffset, parentWidth);
+    onChange(initialState);
+    onChange(initialState);
   };
 
   const getCoordinates = (_ref) => {
@@ -292,11 +292,6 @@ const UncontrolledDiagram = () => {
     onChange(_ref);
   };
 
-  /**
-   * Static: Remove onChange Function
-   *
-   */
-
   useEffect(() => {
     const onWindowResize = () => {
       windowResize.current(diagramParent);
@@ -310,7 +305,6 @@ const UncontrolledDiagram = () => {
 
   return (
     <DiagramWrapper ref={diagramParent}>
-      {/* <button onClick={reset}>Reset</button> */}
       <Diagram schema={schema} onChange={getCoordinates} />
     </DiagramWrapper>
   );
