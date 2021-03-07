@@ -7,6 +7,7 @@
   --medium-candy-apple-red: #db162fff;
 
   --theme-red: #ff3a22;
+  --theme-blue: #57a995;
 
   /* Gray */
   --background-gray: #1d1d1d;
@@ -15,6 +16,7 @@
   --dark-gray: #a9a9a9;
   --silver-gray: #c0c0c0;
   --silver-gray-light: #e8e8e8;
+  --neuphorm-gray: #e0e0e0;
 
   /* White */
   --white: #f8f8f8;
@@ -54,4 +56,13 @@ body {
   font-style: normal;
   font-weight: 300;
   src: url('./fonts/Roboto-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'WebIcon';
+  src: url('./fonts/sc-webfonts.ttf') format('truetype'),
+    url('./fonts/sc-webfonts.woff') format('woff'),
+    url('./fonts/sc-webfonts.svg') format('svg');
+  font-weight: 300;
+  font-style: normal;
 }

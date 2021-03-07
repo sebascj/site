@@ -102,9 +102,6 @@ const Navigation = () => {
         <Link href="/skills">Skills</Link>
       </ListItem>
       <ListItem>
-        <Link href="/projects">Projects</Link>
-      </ListItem>
-      <ListItem>
         <Link href="/contact">Contact</Link>
       </ListItem>
     </List>
