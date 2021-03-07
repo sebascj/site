@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Diagram, { createSchema, useSchema } from 'beautiful-react-diagrams';
 
 import Icon from '../icon/Icon';
@@ -6,129 +6,193 @@ import {
   DiagramWrapper,
   NodeBox,
   NodeBoxMobile,
+  NodeBoxLandscape,
   NodeText
 } from './diagram-styles';
 
-const offsetX = 50;
-const distance = 150;
-const initX = 0;
+const diagramSizes = {
+  initX: 0,
+  initY: 0,
+  mobile: {
+    offsetY: 50,
+    distanceX: 65,
+    distanceY: 120,
+    diagramWidth: 49 * 6
+  },
+  landscape: {
+  offsetY: 50,
+    distanceX: 150,
+    distanceY: 190,
+    diagramWidth: 110 * 6
+  },
+  screen: {
+    offsetY: 50,
+    distanceX: 150,
+    distanceY: 190,
+    diagramWidth: 130 * 6
+  }
+};
 
-const coordinates = [
-  { id: 'node-1', coordinates: [initX + distance, 40] },
-  { id: 'node-2', coordinates: [initX, 240] },
-  { id: 'node-3', coordinates: [initX + distance * 2, 240] },
-  { id: 'node-4', coordinates: [initX + distance, 640] },
-  { id: 'node-5', coordinates: [initX + distance, 440] },
-  { id: 'node-6', coordinates: [initX + distance, 240] },
-  { id: 'node-7', coordinates: [initX + distance * 2, 440] },
-  { id: 'node-9', coordinates: [initX + distance * 4, 440] },
-  { id: 'node-10', coordinates: [initX + distance * 4, 240] },
-  { id: 'node-11', coordinates: [initX + distance * 3, 40] },
-  { id: 'node-12', coordinates: [initX + distance * 2, 40] },
-  { id: 'node-13', coordinates: [initX + distance * 3, 240] },
-  { id: 'node-14', coordinates: [initX + distance * 2, 640] },
-  { id: 'node-15', coordinates: [initX + distance, 840] },
-  { id: 'node-16', coordinates: [initX, 640] }
-];
+const getCoordinates = (props) => {
+  const { initX, initY, distanceX, distanceY } = props;
+
+  const coordinates = [
+    { id: 'node-1', coordinates: [initX + distanceX, initY] },
+    { id: 'node-2', coordinates: [initX, initY + distanceY] },
+    {
+      id: 'node-3',
+      coordinates: [initX + distanceX * 2, initY + distanceY]
+    },
+    {
+      id: 'node-4',
+      coordinates: [initX + distanceX, initY + distanceY * 3]
+    },
+    {
+      id: 'node-5',
+      coordinates: [initX + distanceX, initY + distanceY * 2]
+    },
+    {
+      id: 'node-6',
+      coordinates: [initX + distanceX, initY + distanceY]
+    },
+    {
+      id: 'node-7',
+      coordinates: [initX + distanceX * 2, initY + distanceY * 2]
+    },
+    {
+      id: 'node-9',
+      coordinates: [initX + distanceX * 4, initY + distanceY * 2]
+    },
+    {
+      id: 'node-10',
+      coordinates: [initX + distanceX * 4, initY + distanceY]
+    },
+    { id: 'node-11', coordinates: [initX + distanceX * 3, initY] },
+    { id: 'node-12', coordinates: [initX + distanceX * 2, initY] },
+    {
+      id: 'node-13',
+      coordinates: [initX + distanceX * 3, initY + distanceY]
+    },
+    {
+      id: 'node-14',
+      coordinates: [initX + distanceX * 2, initY + distanceY * 3]
+    },
+    {
+      id: 'node-15',
+      coordinates: [initX + distanceX, initY + distanceY * 4]
+    },
+    { id: 'node-16', coordinates: [initX, initY + distanceY * 3] }
+  ];
+
+  return JSON.parse(JSON.stringify(coordinates));
+};
 
 const createNode = (props) => {
-  const { name, text, styles } = props;
+  const { name, text, styles, display } = props;
   const customStyles = `font-size:3em; ${styles ? styles : ''}`;
-  const CustomNode = (props) => {
-    const { inputs } = props;
+  const Node =
+    display === 'mobile'
+      ? NodeBoxMobile
+      : display === 'landscape'
+      ? NodeBoxLandscape
+      : NodeBox;
+  const CustomNode = () => {
     return (
-      <NodeBox>
+      <Node>
         <Icon name={name} styles={customStyles} />
         {text && <NodeText>{text}</NodeText>}
-        <div>
-          {inputs.map((port) =>
-            cloneElement(port, {
-              style: { width: '50px', height: '25px', background: '#1B263B' }
-            })
-          )}
-        </div>
-      </NodeBox>
+      </Node>
     );
   };
   return CustomNode;
 };
 
-const hydrateState = (state) => {
+const hydrateState = (state, display, width) => {
   const { nodes, links } = state;
+  const diagram = {
+    initX: diagramSizes.initX,
+    initY: diagramSizes.initY,
+    distanceX: diagramSizes[display].distanceX,
+    distanceY: diagramSizes[display].distanceY,
+    offsetY: diagramSizes[display].offsetY,
+    diagramWidth: diagramSizes[display].diagramWidth
+  };
+  const coordinatesCopy = getCoordinates(diagram);
   const hidratedNodes = nodes.map((node) => {
-    const newCoordinates = coordinates.filter((coordinatesNode) => {
+    const newCoordinates = coordinatesCopy.filter((coordinatesNode) => {
       return coordinatesNode.id === node.id;
     })[0].coordinates;
 
-    newCoordinates[0] = newCoordinates[0] + offsetX;
+    newCoordinates[0] =
+      newCoordinates[0] + (width - 40 - diagram.diagramWidth) / 2;
+    newCoordinates[1] = newCoordinates[1] + diagram.offsetY;
     return Object.assign({}, node, { coordinates: newCoordinates });
   });
   return { nodes: hidratedNodes, links };
 };
 
-const getInitialState = () => {
+const getInitialState = (display, width) => {
   const initialState = {
     nodes: [
       {
         id: 'node-1',
-        // render: createNode({ name: 'netlify', text: 'SSG' })
-        render: createNode({ name: 'netlify' })
+        render: createNode({ display, name: 'netlify' })
       },
       {
         id: 'node-2',
-        render: createNode({ name: 'html' })
+        render: createNode({ display, name: 'html' })
       },
       {
         id: 'node-3',
-        render: createNode({ name: 'css' })
+        render: createNode({ display, name: 'css' })
       },
       {
         id: 'node-4',
-        render: createNode({ name: 'js', styles: 'background: #FFF;' })
+        render: createNode({ display, name: 'js', styles: 'background: #FFF;' })
       },
       {
         id: 'node-5',
-        render: createNode({ name: 'react' })
+        render: createNode({ display, name: 'react' })
       },
       {
         id: 'node-6',
-        render: createNode({ name: 'nextjs' })
+        render: createNode({ display, name: 'nextjs' })
       },
       {
         id: 'node-7',
-        render: createNode({ name: 'styled', styles: 'font-size: 4em;' })
+        render: createNode({ display, name: 'styled' })
       },
       {
         id: 'node-9',
-        render: createNode({ name: 'windows' })
+        render: createNode({ display, name: 'windows' })
       },
       {
         id: 'node-10',
-        render: createNode({ name: 'debian' })
+        render: createNode({ display, name: 'debian' })
       },
       {
         id: 'node-11',
-        render: createNode({ name: 'git' })
+        render: createNode({ display, name: 'git' })
       },
       {
         id: 'node-12',
-        render: createNode({ name: 'github' })
+        render: createNode({ display, name: 'github' })
       },
       {
         id: 'node-13',
-        render: createNode({ name: 'vscode' })
+        render: createNode({ display, name: 'vscode' })
       },
       {
         id: 'node-14',
-        render: createNode({ name: 'maps' })
+        render: createNode({ display, name: 'maps' })
       },
       {
         id: 'node-15',
-        render: createNode({ name: 'analytics' })
+        render: createNode({ display, name: 'analytics' })
       },
       {
         id: 'node-16',
-        render: createNode({ name: 'mailgun' })
+        render: createNode({ display, name: 'mailgun' })
       }
     ],
     links: [
@@ -174,15 +238,27 @@ const getInitialState = () => {
       }
     ]
   };
-  return hydrateState(initialState);
+  return hydrateState(initialState, display, width);
 };
 
-const initialSchema = createSchema(getInitialState());
+const initialSchema = createSchema(getInitialState('screen', 1300));
 
 const UncontrolledDiagram = () => {
+  const width = useRef(0);
   const [schema, { onChange }] = useSchema(initialSchema);
-  const reset = () => {
-    onChange(Object.assign(getInitialState()));
+  const windowResize = useRef(() => {
+    width.current = window.innerWidth;
+    if (width.current >= 1300) {
+      reset('screen');
+    } else if (width.current >= 600) {
+      reset('landscape');
+    } else {
+      reset('mobile');
+    }
+  });
+
+  const reset = (display) => {
+    onChange(Object.assign(getInitialState(display, width.current)));
   };
 
   const getCoordinates = (_ref) => {
@@ -204,7 +280,14 @@ const UncontrolledDiagram = () => {
    */
 
   useEffect(() => {
-    reset();
+    const cb = (e) => {
+      windowResize.current(e);
+    };
+    window.addEventListener('resize', cb);
+    windowResize.current();
+    return () => {
+      window.removeEventListener('resize', cb);
+    };
   }, []);
 
   return (

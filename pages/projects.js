@@ -9,7 +9,6 @@ import Diagram from '../components/diagram/Diagram';
 const ProjectContent = styled.div`
   display: flex;
   flex-flow: column;
-  justify-content: center;
   align-items: center;
   margin: 0 20px;
   height: 100%;
