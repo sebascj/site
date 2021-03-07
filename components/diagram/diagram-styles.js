@@ -77,7 +77,9 @@ const DiagramWrapper = styled.div`
   }
   width: 100%;
   & .bi.bi-diagram {
-    background-color: var(--neuphorm-gray);
+    background-color: var(--white);
+    border: none;
+    box-shadow: none;
   }
   /*TODO: remove important*/
   .link {
