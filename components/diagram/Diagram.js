@@ -260,7 +260,10 @@ const UncontrolledDiagram = () => {
     switch (display) {
       case 'screen':
         displayOffset =
-          diagramSizes.screen.diagramWidth > parentWidth
+          diagramSizes.screen.diagramWidth > parentWidth &&
+          diagramSizes.landscape.diagramWidth > parentWidth
+            ? 'mobile'
+            : screen.diagramWidth > parentWidth
             ? 'landscape'
             : 'screen';
         break;
