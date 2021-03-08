@@ -11,6 +11,9 @@ const ProjectContent = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  @media (min-width: 600px) {
+    margin: 4em;
+  }
 `;
 const SkillsWrapper = styled.div`
   display: flex;
@@ -18,16 +21,17 @@ const SkillsWrapper = styled.div`
   min-width: 300px;
 `;
 const DiagramWrapper = styled.div`
-  flex: 2 0 auto;
-  min-width: 300px;
-  @media (min-width: 600px) and (max-width: 900px) {
-    min-width: 600px;
+  width: 50%;
+  @media (max-width: 900px) {
+    width: 100%;
   }
 `;
 
 const ExperienceWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  z-index: 10;
+  justify-content: space-between;
 `;
 
 const Skills = styled.div`
@@ -39,10 +43,14 @@ const Skill = styled(SkillBar)`
 `;
 
 const StyledCard = styled(Card)`
-  margin: 20px;
   color: var(--text-gray);
   padding: 20px;
-  max-width: 300px;
+  width: 48%;
+  @media (max-width: 1300px) {
+    width: 100%;
+    margin: 16px;
+  }
+
   .title {
     font-family: 'Source Sans Pro';
     display: block;
@@ -65,10 +73,13 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const LeftContent = styled.section`
+const LeftContent = styled.div`
   display: flex;
   flex-flow: column;
-  /* flex: 1 0 auto; */
+  width: 50%;
+  @media (max-width: 900px) {
+    width: 100%;
+  }
 `;
 
 function About() {
@@ -91,7 +102,6 @@ function About() {
               </Skills>
             </SkillsWrapper>
             <ExperienceWrapper>
-              {/* <Subtitle>Experience</Subtitle> */}
               <StyledCard>
                 <span className="title">Fronted Developer</span>
                 <span className="subtitle">Anomali</span>
@@ -112,7 +122,6 @@ function About() {
             </ExperienceWrapper>
           </LeftContent>
           <DiagramWrapper id="diagram-container">
-            <Subtitle>How I built this site</Subtitle>
             <Diagram />
           </DiagramWrapper>
         </ProjectContent>

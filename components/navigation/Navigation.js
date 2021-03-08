@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import MenuIcon from '../styles/icons/mobile-icon.svg';
 
 const LeftNavBar = styled.div`
+  position: fixed;
+  height: 100vh;
   display: flex;
   flex-flow: column;
   justify-content: space-around;

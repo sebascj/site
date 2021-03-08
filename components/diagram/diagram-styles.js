@@ -75,7 +75,6 @@ const DiagramWrapper = styled.div`
   @media (max-width: 600px) {
     height: 38rem;
   }
-  width: 100%;
   & .bi.bi-diagram {
     background-color: var(--white);
     border: none;
