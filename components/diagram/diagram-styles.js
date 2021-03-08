@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const NodeBox = styled.div`
   border-radius: 150px;
-  background: #e0e0e0;
+  background: var(--neumorph-gray);
   box-shadow: 10px 10px 20px #bebebe, -10px -10px 20px #ffffff;
   width: 100px;
   height: 100px;
@@ -23,7 +23,7 @@ const NodeBox = styled.div`
 
 const NodeBoxLandscape = styled.div`
   border-radius: 150px;
-  background: #e0e0e0;
+  background: var(--neumorph-gray);
   box-shadow: 7px 7px 14px #bebebe, -7px -7px 14px #ffffff;
   width: 70px;
   height: 70px;
@@ -44,7 +44,7 @@ const NodeBoxLandscape = styled.div`
 
 const NodeBoxMobile = styled.div`
   border-radius: 150px;
-  background: #e0e0e0;
+  background: var(--neumorph-gray);
   box-shadow: 3px 3px 6px #bebebe, -3px -3px 6px #ffffff;
   width: 30px;
   height: 30px;

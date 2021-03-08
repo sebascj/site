@@ -3,9 +3,12 @@ import { useEffect, useRef } from 'react';
 
 const Bar = styled.footer(
   ({ color }) => `
-    background-color: var(--text-gray);
-    height: 25px;
+    height: 15px;
+    border-radius: 10px;
+    border: 4px solid var(--neumorph-gray);
+    padding: 4px;
     & > div {
+      border-radius: 3px;
       width: 0;
       height: 100%;
       background-color: ${color};
@@ -13,6 +16,11 @@ const Bar = styled.footer(
     }
 `
 );
+
+const Name = styled.span`
+  font-family: 'Hind Vadodara';
+  color: var(--text-gray);
+`;
 
 const SkillBar = ({ className, name, value = 100, color = '#ff3a22' }) => {
   const bar = useRef(null);
@@ -22,7 +30,7 @@ const SkillBar = ({ className, name, value = 100, color = '#ff3a22' }) => {
 
   return (
     <div className={className}>
-      <span>{name}</span>
+      <Name>{name}</Name>
       <Bar color={color}>
         <div ref={bar}></div>
       </Bar>

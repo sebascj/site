@@ -16,19 +16,31 @@ const ProjectContent = styled.div`
   /* margin: 0 20px; */
   /* height: 100%; */
 `;
-
 const SkillsWrapper = styled.div`
   flex: 1 0 auto;
-  border: 1px solid black;
+  display: flex;
+  flex-flow: column;
+  /* border: 1px solid black; */
   min-width: 300px;
-  height: 500px;
 `;
 const DiagramWrapper = styled.div`
-  flex: 1 0 auto;
+  flex: 2 0 auto;
   min-width: 300px;
   @media (min-width: 600px) and (max-width: 900px) {
     min-width: 600px;
   }
+`;
+
+const ExperienceWrapper = styled.div``;
+
+const Skills = styled.div`
+  border: 5px dashed var(--neumorph-gray);
+  margin: 20px;
+  position: relative;
+  flex: 1 0 auto;
+`;
+const Skill = styled(SkillBar)`
+  margin: 20px;
 `;
 
 function About() {
@@ -40,8 +52,17 @@ function About() {
       <Layout>
         <ProjectContent>
           <SkillsWrapper>
-            <Subtitle>Skills</Subtitle>
-            <SkillBar name="Javascript" value="90" color="#f7df1e" />
+            <ExperienceWrapper>
+              <Subtitle>Experience</Subtitle>
+            </ExperienceWrapper>
+            <Skills>
+              <Subtitle>Skills</Subtitle>
+              <Skill name="Javascript" value="90" color="var(--orange-200)" />
+              <Skill name="AngularJS" value="90" color="var(--orange-200)" />
+              <Skill name="React" value="70" color="var(--orange-200)" />
+              <Skill name="Docker" value="50" color="var(--orange-200)" />
+              <Skill name="Mongo" value="30" color="var(--orange-200)" />
+            </Skills>
           </SkillsWrapper>
           <DiagramWrapper id="diagram-container">
             <Subtitle>How I built this site</Subtitle>
