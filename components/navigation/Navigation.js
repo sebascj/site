@@ -10,6 +10,7 @@ const LeftNavBar = styled.div`
   justify-content: space-around;
   background-color: var(--white);
   width: 110px;
+  z-index: 10;
   box-shadow: 0 5.3px 24.7px -20px rgba(0, 0, 0, 0.272),
     0 6.6px 25.2px -20px rgba(0, 0, 0, 0.354),
     0 15px 60px -20px rgba(0, 0, 0, 0.54);
