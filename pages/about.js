@@ -16,7 +16,6 @@ const AboutArticle = styled.article`
   align-items: center;
   max-width: 800px;
   p {
-    margin: 10px;
     text-align: justify;
     width: 100%;
   }
@@ -82,7 +81,7 @@ function About() {
                 <ImageRobot>
                   <img
                     alt="rover"
-                    src="images/robot.png?ng_resize=fit&w=300"></img>
+                    src="images/robot.png?nf_resize=fit&w=300"></img>
                 </ImageRobot>
                 <Paragraph>
                   In my last year at university, two classmates and I built the
