@@ -59,6 +59,15 @@ function About() {
                 ones or losing games in World of Warcraft. I like building my
                 own computers, playing guitar, photography and video games.
               </Paragraph>
+              <img
+                alt="chinatown"
+                srcSet="images/DSC00277.JPG?nf_resize=fit&w=320 320w,
+                images/DSC00277.JPG?nf_resize=fit&w=480 480w,
+                images/DSC00277.JPG?nf_resize=fit&w=650 650w"
+                sizes="(max-width: 320px) 280px,
+                (max-width: 480px) 440px,
+                650px"
+                src="images/DSC00277.JPG?nf_resize=fit&w=650"></img>
               <Paragraph>
                 The game that moved me the most: The last of us part II
                 <br />A book I liked: Shutter Island
