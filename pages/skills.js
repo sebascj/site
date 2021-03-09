@@ -45,7 +45,7 @@ const Skill = styled(SkillBar)`
 const StyledCard = styled(Card)`
   color: var(--text-gray);
   padding: 20px;
-  width: 48%;
+  width: 42%;
   @media (max-width: 1300px) {
     width: 100%;
     margin: 16px;

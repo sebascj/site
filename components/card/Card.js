@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const StyledCard = styled.div`
-  box-sizing: border-box;
-  background: var(--neumorph-gray);
-  box-shadow: -15px 15px 30px #bebebe, 15px -15px 30px #ffffff;
+  border-radius: 13px;
+  background: #f0f0f0;
+  box-shadow: 5px 5px 10px #dfdfdf, -5px -5px 10px #ffffff;
 `;
 
 const Card = ({ className, children }) => {
