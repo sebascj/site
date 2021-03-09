@@ -22,6 +22,29 @@ const AboutArticle = styled.article`
   }
 `;
 
+const ImageWrapper = styled.div`
+  width: 650px;
+  @media (max-width: 330px) {
+    width: 280px;
+  }
+  @media (min-width: 330px) and (max-width: 480px) {
+    width: 330px;
+  }
+  @media (min-width: 480px) and (max-width: 700px) {
+    width: 480px;
+  }
+  img {
+    width: 100%;
+  }
+  span {
+    font-family: 'Hind Vadodara';
+    text-align: center;
+    width: 100%;
+    display: block;
+    color: var(--text-gray);
+  }
+`;
+
 function About() {
   return (
     <>
@@ -59,6 +82,23 @@ function About() {
                 ones or losing games in World of Warcraft. I like building my
                 own computers, playing guitar, photography and video games.
               </Paragraph>
+              <ImageWrapper>
+                <img
+                  alt="chinatown"
+                  srcSet="
+                    images/DSC00277.JPG?nf_resize=fit&w=320 320w,
+                    images/DSC00277.JPG?nf_resize=fit&w=480 480w,
+                    images/DSC00277.JPG?nf_resize=fit&w=650 650w"
+                  sizes="
+                    (max-width: 320px) 280px,
+                    (max-width: 480px) 330px,
+                    (max-width: 700px) 480px,
+                    650px"
+                  src="images/DSC00277.JPG?nf_resize=fit&w=650"></img>
+                <span>
+                  Check out this cool photo I took in San Francisco in 2019
+                </span>
+              </ImageWrapper>
               <Paragraph>
                 The game that moved me the most: The last of us part II
                 <br />A book I liked: Shutter Island
