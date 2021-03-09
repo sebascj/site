@@ -34,7 +34,7 @@ const ImageWrapper = styled.div`
     width: 480px;
   }
   img {
-    /* width: 100%; */
+    width: 100%;
   }
   span {
     font-family: 'Hind Vadodara';
