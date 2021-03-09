@@ -72,9 +72,10 @@ const NodeText = styled.div`
 
 const DiagramWrapper = styled.div`
   height: 60rem;
-  @media (max-width: 600px) {
+  @media (max-width: 787px) {
     height: 38rem;
   }
+
   & .bi.bi-diagram {
     background-color: var(--white);
     border: none;

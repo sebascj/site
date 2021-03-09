@@ -14,22 +14,22 @@ const diagramSizes = {
   initX: 0,
   initY: 0,
   mobile: {
-    offsetY: 50,
     distanceX: 65,
     distanceY: 120,
-    diagramWidth: 49 * 6
+    diagramWidth: 49 * 6,
+    diagramHeight: 100 * 5
   },
   landscape: {
-    offsetY: 50,
     distanceX: 150,
     distanceY: 190,
-    diagramWidth: 110 * 6
+    diagramWidth: 110 * 6,
+    diagramHeight: 150 * 5
   },
   screen: {
-    offsetY: 50,
     distanceX: 150,
     distanceY: 190,
-    diagramWidth: 115 * 6
+    diagramWidth: 115 * 6,
+    diagramHeight: 160 * 5
   }
 };
 
@@ -107,15 +107,15 @@ const createNode = (props) => {
   return CustomNode;
 };
 
-const hydrateState = (state, display, width) => {
+const hydrateState = (state, display, width, height) => {
   const { nodes, links } = state;
   const diagram = {
     initX: diagramSizes.initX,
     initY: diagramSizes.initY,
     distanceX: diagramSizes[display].distanceX,
     distanceY: diagramSizes[display].distanceY,
-    offsetY: diagramSizes[display].offsetY,
-    diagramWidth: diagramSizes[display].diagramWidth
+    diagramWidth: diagramSizes[display].diagramWidth,
+    diagramHeight: diagramSizes[display].diagramHeight
   };
   const coordinatesCopy = getCoordinates(diagram);
   const hydratedNodes = nodes.map((node) => {
@@ -123,13 +123,14 @@ const hydrateState = (state, display, width) => {
       return coordinatesNode.id === node.id;
     })[0].coordinates;
     newCoordinates[0] = newCoordinates[0] + (width - diagram.diagramWidth) / 2;
-    newCoordinates[1] = newCoordinates[1] + diagram.offsetY;
+    newCoordinates[1] =
+      newCoordinates[1] + (height - diagram.diagramHeight) / 2;
     return Object.assign({}, node, { coordinates: newCoordinates });
   });
   return { nodes: hydratedNodes, links };
 };
 
-const getInitialState = (display, width) => {
+const getInitialState = (display, width, height) => {
   const initialState = {
     nodes: [
       {
@@ -236,7 +237,7 @@ const getInitialState = (display, width) => {
       }
     ]
   };
-  return createSchema(hydrateState(initialState, display, width));
+  return createSchema(hydrateState(initialState, display, width, height));
 };
 
 const UncontrolledDiagram = () => {
@@ -245,17 +246,18 @@ const UncontrolledDiagram = () => {
   const [schema, { onChange }] = useSchema();
   const windowResize = useRef((parent) => {
     const parentWidth = parent.current.offsetWidth;
+    const parentHeight = parent.current.offsetHeight;
     width.current = window.innerWidth;
     if (width.current >= 1300) {
-      reset('screen', parentWidth);
+      reset('screen', parentWidth, parentHeight);
     } else if (width.current >= 600) {
-      reset('landscape', parentWidth);
+      reset('landscape', parentWidth, parentHeight);
     } else {
-      reset('mobile', parentWidth);
+      reset('mobile', parentWidth, parentHeight);
     }
   });
 
-  const reset = (display, parentWidth) => {
+  const reset = (display, parentWidth, parentHeight) => {
     let displayOffset = '';
     switch (display) {
       case 'screen':
@@ -277,7 +279,11 @@ const UncontrolledDiagram = () => {
         displayOffset = display;
         break;
     }
-    const initialState = getInitialState(displayOffset, parentWidth);
+    const initialState = getInitialState(
+      displayOffset,
+      parentWidth,
+      parentHeight
+    );
     onChange(initialState);
     onChange(initialState);
   };
