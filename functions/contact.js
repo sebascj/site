@@ -1,6 +1,6 @@
 const mailgun = require('mailgun-js');
 
-exports.handler = function (event, context) {
+exports.handler = async function (event) {
   const message = JSON.parse(event.body);
   const mg = mailgun({
     apiKey: process.env.MAILGUN_API_KEY,
@@ -10,16 +10,15 @@ exports.handler = function (event, context) {
     from: `${message.name} <${message.email}>`,
     to: `Sebastian Clavijo <${process.env.EMAIL}>`,
     subject: message.subject,
-    text: message.body
+    text: message.message
   };
-
-  mg.messages().send(email, (error, response) => {
-    if (error) {
-      return console.log(error);
-    }
+  try {
+    await mg.messages().send(email);
     return {
       statusCode: 200,
       body: 'Mail Sent'
     };
-  });
+  } catch (e) {
+    return { statusCode: 500, body: `Error trying to send message: ${e}` };
+  }
 };
