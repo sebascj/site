@@ -18,6 +18,8 @@ const AboutArticle = styled.article`
   p {
     text-align: justify;
     width: 100%;
+    line-height: 1.5em;
+    margin: 0 0 1em;
   }
 `;
 
@@ -47,9 +49,10 @@ const ImageWrapper = styled.div`
 const ImageRobot = styled.span`
   float: right;
   width: 230px;
-  margin-left: 16px;
+  margin-left: 4em;
   @media (max-width: 480px) {
     width: 110px;
+    margin-left: 2em;
   }
   img {
     width: 100%;

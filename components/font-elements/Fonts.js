@@ -3,6 +3,7 @@ const TitleComponent = styled.h1`
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 4.2rem;
   color: var(--text-gray);
+  margin: 2rem 0;
   @media screen and (max-width: 900px) {
     font-size: 3.2em;
   }
