@@ -34,7 +34,7 @@ const ImageWrapper = styled.div`
     width: 480px;
   }
   img {
-    width: 100%;
+    /* width: 100%; */
   }
   span {
     font-family: 'Hind Vadodara';
@@ -92,7 +92,7 @@ function About() {
                   sizes="
                     (max-width: 320px) 280px,
                     (max-width: 480px) 330px,
-                    (max-width: 700px) 480px
+                    (max-width: 700px) 480px,
                     650px"
                   src="images/DSC00277.JPG?nf_resize=fit&w=650"></img>
                 <span>
