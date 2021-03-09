@@ -88,6 +88,11 @@ const Navigation = () => {
 
   const toggleMobileNavMenu = (e) => {
     e.preventDefault();
+    if (!showNav) {
+      document.body.style.position = 'fixed';
+    } else {
+      document.body.style.position = '';
+    }
     setNav(!showNav);
   };
 
@@ -114,6 +119,7 @@ const Navigation = () => {
     setLoading(false);
     const handleRouteChange = () => {
       setNav(false);
+      document.body.style.position = '';
     };
     router.events.on('routeChangeComplete', handleRouteChange);
     return () => {
