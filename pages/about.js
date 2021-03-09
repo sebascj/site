@@ -45,6 +45,18 @@ const ImageWrapper = styled.div`
   }
 `;
 
+const ImageRobot = styled.span`
+  float: right;
+  width: 230px;
+  margin-left: 16px;
+  @media (max-width: 480px) {
+    width: 110px;
+  }
+  img {
+    width: 100%;
+  }
+`;
+
 function About() {
   return (
     <>
@@ -66,22 +78,29 @@ function About() {
                 my first microcontroller in assembly language. Since then, I
                 have been passionate about coding, algorithms, and logic.
               </Paragraph>
-              <Paragraph>
-                In my last year at university, two classmates and I built the
-                winning robot in a robotics competition held in Medellin, the
-                city where I live.
-              </Paragraph>
-              <Paragraph>
-                I worked with government educational programs teaching robotics
-                and programming to girls and boys in their final school years.
-                It was a significant part of my life that taught me the
-                importance of transmitting my knowledge to others.
-              </Paragraph>
-              <Paragraph>
-                When I&apos;m not coding, I spend my free time with my loved
-                ones or losing games in World of Warcraft. I like building my
-                own computers, playing guitar, photography and video games.
-              </Paragraph>
+              <span>
+                <ImageRobot>
+                  <img
+                    alt="rover"
+                    src="images/robot.png?ng_resize=fit&w=300"></img>
+                </ImageRobot>
+                <Paragraph>
+                  In my last year at university, two classmates and I built the
+                  winning robot in a robotics competition held in Medellin, the
+                  city where I live.
+                </Paragraph>
+                <Paragraph>
+                  I worked with government educational programs teaching
+                  robotics and programming to girls and boys in their final
+                  school years. It was a significant part of my life that taught
+                  me the importance of transmitting my knowledge to others.
+                </Paragraph>
+                <Paragraph>
+                  When I&apos;m not coding, I spend my free time with my loved
+                  ones or losing games in World of Warcraft. I like building my
+                  own computers, playing guitar, photography and video games.
+                </Paragraph>
+              </span>
               <ImageWrapper>
                 <img
                   alt="chinatown"
