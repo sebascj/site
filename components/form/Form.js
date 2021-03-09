@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { ContactForm, NameEmail, Submit, Field } from './form-styles';
 
 const Form = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
     try {
@@ -10,6 +10,7 @@ const Form = () => {
         method: 'POST',
         body: JSON.stringify(data)
       });
+      reset();
     } catch (error) {
       console.error(error);
     }
