@@ -7,7 +7,7 @@ const MapContainer = styled.div`
   height: 100%;
   min-width: 320px;
   flex: 0 0 50%;
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     width: 100%;
     margin: 8px;
     flex: 0 1 auto;
@@ -19,7 +19,7 @@ const createMap = () => {
   const newMap = new google.maps.Map(document.getElementById('google-map'), {
     center: location,
     disableDefaultUI: true,
-    zoom: 15,
+    zoom: 13,
     styles: mapConfig.white
   });
   new google.maps.Marker({

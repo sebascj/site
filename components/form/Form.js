@@ -2,10 +2,17 @@ import { useForm } from 'react-hook-form';
 import { ContactForm, NameEmail, Submit, Field } from './form-styles';
 
 const Form = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -50,7 +57,7 @@ const Form = () => {
         </label>
       </Field>
       <Submit>
-        <input type="submit" />
+        <button>Send</button>
       </Submit>
     </ContactForm>
   );
