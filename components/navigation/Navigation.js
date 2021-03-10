@@ -111,10 +111,6 @@ const MobileMenu = styled.div`
 const Logo = styled.div`
   position: absolute;
   top: 1em;
-  @media (max-width: 1300px) {
-    left: calc(50% - 98px / 2);
-    top: -7em;
-  }
 `;
 const ScreenMenu = styled.div`
   height: 100%;
@@ -184,21 +180,12 @@ const Navigation = () => {
           <MenuIcon />
         </MobileNavIcon>
       )}
-      {showNav && (
-        <MobileMenu>
-          <div>
-            <Logo>
-              <Icon name="website" styles="font-size: 7em;"></Icon>
-            </Logo>
-            {menu}
-          </div>
-        </MobileMenu>
-      )}
+      {showNav && <MobileMenu>{menu}</MobileMenu>}
       {
         <LeftNavBar>
           {!loading && (
             <Logo>
-              <Icon name="website" styles="font-size: 7em;"></Icon>
+              <Icon name="website" styles="font-size: 6em;"></Icon>
             </Logo>
           )}
           <ScreenMenu>{!loading && menu}</ScreenMenu>
