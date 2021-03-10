@@ -7,15 +7,18 @@ const IconComponent = styled.span(
       font-family: "WebIcon";
       content: "${content}";
       color: ${color};
-      ${custom}
+      ${custom ? custom : ''}
     }
   `
 );
 
+
 const Icon = (props) => {
   const { name, styles } = props;
   const { code, color } = unicodes[name];
-  return <IconComponent content={code} color={color} custom={styles} />;
+  return (
+    <IconComponent content={code} color={color} custom={styles}></IconComponent>
+  );
 };
 
 export default Icon;

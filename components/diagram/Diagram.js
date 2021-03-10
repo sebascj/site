@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Diagram, { createSchema, useSchema } from 'beautiful-react-diagrams';
 
 import Icon from '../icon/Icon';
+import GoogleMapsIcon from '../icon/GoogleMapsIcon';
 import {
   DiagramWrapper,
   NodeBox,
@@ -96,10 +97,16 @@ const createNode = (props) => {
       : display === 'landscape'
       ? NodeBoxLandscape
       : NodeBox;
+
+  const googleMapsIcon = name === 'maps';
   const CustomNode = () => {
     return (
       <Node>
-        <Icon name={name} styles={customStyles} />
+        {googleMapsIcon ? (
+          <GoogleMapsIcon styles={customStyles} />
+        ) : (
+          <Icon name={name} styles={customStyles} />
+        )}
         {text && <NodeText>{text}</NodeText>}
       </Node>
     );

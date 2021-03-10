@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import MenuIcon from '../styles/icons/mobile-icon.svg';
+import Icon from '../icon/Icon';
 
 const LeftNavBar = styled.div`
   position: fixed;
@@ -101,12 +102,18 @@ const MobileMenu = styled.div`
     z-index: 80;
     background-color: var(--white);
   }
+  & > div {
+    width: 100%;
+    position: relative;
+  }
 `;
 
 const Logo = styled.div`
-  width: 95px;
-  img {
-    width: 100%;
+  position: absolute;
+  top: 1em;
+  @media (max-width: 1300px) {
+    left: calc(50% - 98px / 2);
+    top: -7em;
   }
 `;
 const ScreenMenu = styled.div`
@@ -179,17 +186,19 @@ const Navigation = () => {
       )}
       {showNav && (
         <MobileMenu>
-          <Logo>
-            <img alt="Website Logo" src="/assets/website-logo.png" />
-          </Logo>
-          {menu}
+          <div>
+            <Logo>
+              <Icon name="website" styles="font-size: 7em;"></Icon>
+            </Logo>
+            {menu}
+          </div>
         </MobileMenu>
       )}
       {
         <LeftNavBar>
           {!loading && (
             <Logo>
-              <img alt="Website Logo" src="/assets/website-logo.png" />
+              <Icon name="website" styles="font-size: 7em;"></Icon>
             </Logo>
           )}
           <ScreenMenu>{!loading && menu}</ScreenMenu>
