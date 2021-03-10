@@ -18,6 +18,7 @@ const SubtitleComponent = styled.h2`
 `;
 const ParagraphComponent = styled.p`
   font-family: 'Roboto', sans-serif;
+  font-weight: 300;
   font-size: 1.33rem;
   color: var(--text-gray);
   @media screen and (max-width: 900px) {

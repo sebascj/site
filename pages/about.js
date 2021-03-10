@@ -7,7 +7,7 @@ import { Title, Paragraph } from '../components/font-elements/Fonts';
 const AboutContent = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 20px;
+  margin: 4em;
 `;
 
 const AboutArticle = styled.article`
