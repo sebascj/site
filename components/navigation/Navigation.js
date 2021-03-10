@@ -180,7 +180,7 @@ const Navigation = () => {
       {showNav && (
         <MobileMenu>
           <Logo>
-            <img alt="Website Logo" src="/images/website-logo.png" />
+            <img alt="Website Logo" src="/assets/website-logo.png" />
           </Logo>
           {menu}
         </MobileMenu>
@@ -188,10 +188,7 @@ const Navigation = () => {
       {
         <LeftNavBar>
           <Logo>
-            <img
-              alt="Website Logo"
-              src="/images/website-logo.png?nf_resize=fit&w=100"
-            />
+            <img alt="Website Logo" src="/assets/website-logo.png" />
           </Logo>
           <ScreenMenu>{!loading && menu}</ScreenMenu>
         </LeftNavBar>
