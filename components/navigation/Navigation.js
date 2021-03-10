@@ -91,6 +91,7 @@ const MobileMenu = styled.div`
   display: none;
   @media screen and (max-width: 1300px) {
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -176,7 +177,17 @@ const Navigation = () => {
           <MenuIcon />
         </MobileNavIcon>
       )}
-      {showNav && <MobileMenu>{menu}</MobileMenu>}
+      {showNav && (
+        <MobileMenu>
+          <Logo>
+            <img
+              alt="Website Logo"
+              src="/images/website-logo.png?nf_resize=fit&w=100"
+            />
+          </Logo>
+          {menu}
+        </MobileMenu>
+      )}
       {
         <LeftNavBar>
           <Logo>
