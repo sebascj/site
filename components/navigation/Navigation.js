@@ -27,9 +27,30 @@ const List = styled.ul`
   padding: 0;
 `;
 
+const RouteActive = styled.span(
+  ({ active }) => `
+    @media(max-width: 1300px) {
+      color: ${active ? 'var(--theme-red)' : 'var(--text-gray)'};
+    }
+    @media(min-width: 1300px) {
+      &::after {
+        display: ${active ? 'block' : 'none'};
+        content: '';
+        width: 70%;
+        height: 2px;
+        background: var(--theme-red);
+        position: absolute;
+        bottom: 10px;
+        left: calc(50% - 38px);
+      }
+    }
+`
+);
+
 const ListItem = styled.li`
   list-style-type: none;
   text-align: center;
+  position: relative;
   a {
     font-family: 'Hind Vadodara';
     color: var(--text-gray);
@@ -99,18 +120,26 @@ const Navigation = () => {
   const menu = (
     <List>
       <ListItem>
-        <Link href="/">Home</Link>
+        <RouteActive active={router.pathname === '/'}>
+          <Link href="/">Home</Link>
+        </RouteActive>
       </ListItem>
       <ListItem>
-        <Link href="/about" passHref>
-          About
-        </Link>
+        <RouteActive active={router.pathname === '/about'}>
+          <Link href="/about" passHref>
+            About
+          </Link>
+        </RouteActive>
       </ListItem>
       <ListItem>
-        <Link href="/skills">Skills</Link>
+        <RouteActive active={router.pathname === '/skills'}>
+          <Link href="/skills">Skills</Link>
+        </RouteActive>
       </ListItem>
       <ListItem>
-        <Link href="/contact">Contact</Link>
+        <RouteActive active={router.pathname === '/contact'}>
+          <Link href="/contact">Contact</Link>
+        </RouteActive>
       </ListItem>
     </List>
   );
