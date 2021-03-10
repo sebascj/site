@@ -193,7 +193,7 @@ const Navigation = () => {
         </MobileNavIcon>
       )}
       {showNav && <MobileMenu>{menu}</MobileMenu>}
-      {
+      {!loading && (
         <LeftNavBar>
           <Logo>
             <Icon name="website" styles="font-size: 6em;"></Icon>
@@ -220,7 +220,7 @@ const Navigation = () => {
             </a>
           </ContactIcons>
         </LeftNavBar>
-      }
+      )}
     </>
   );
 };
