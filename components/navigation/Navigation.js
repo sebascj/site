@@ -9,7 +9,8 @@ const LeftNavBar = styled.div`
   height: 100vh;
   display: flex;
   flex-flow: column;
-  justify-content: space-around;
+  align-items: center;
+  /* justify-content: space-around; */
   background-color: var(--white);
   width: 110px;
   z-index: 10;
@@ -36,12 +37,11 @@ const RouteActive = styled.span(
       &::after {
         display: ${active ? 'block' : 'none'};
         content: '';
-        width: 70%;
+        width: 100%;
         height: 2px;
         background: var(--theme-red);
         position: absolute;
         bottom: 10px;
-        left: calc(50% - 38px);
       }
     }
 `
@@ -100,6 +100,19 @@ const MobileMenu = styled.div`
     z-index: 80;
     background-color: var(--white);
   }
+`;
+
+const Logo = styled.div`
+  width: 95px;
+  img {
+    width: 100%;
+  }
+`;
+const ScreenMenu = styled.div`
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
 `;
 
 const Navigation = () => {
@@ -164,7 +177,17 @@ const Navigation = () => {
         </MobileNavIcon>
       )}
       {showNav && <MobileMenu>{menu}</MobileMenu>}
-      {<LeftNavBar>{!loading && menu}</LeftNavBar>}
+      {
+        <LeftNavBar>
+          <Logo>
+            <img
+              alt="Website Logo"
+              src="/images/website-logo.png?nf_resize=fit&w=100"
+            />
+          </Logo>
+          <ScreenMenu>{!loading && menu}</ScreenMenu>
+        </LeftNavBar>
+      }
     </>
   );
 };
