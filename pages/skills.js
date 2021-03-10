@@ -31,7 +31,7 @@ const ExperienceWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   z-index: 10;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const Skills = styled.div`
