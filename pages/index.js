@@ -32,7 +32,7 @@ const Content = styled.div`
   @media (max-width: 900px) {
     height: unset;
     align-items: center;
-    margin-top: 5rem;
+    margin: 5rem 2rem;
     padding-bottom: 0;
   }
 `;
