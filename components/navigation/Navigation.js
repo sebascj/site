@@ -11,7 +11,7 @@ const LeftNavBar = styled.div`
   display: flex;
   flex-flow: column;
   align-items: center;
-  /* justify-content: space-around; */
+  justify-content: space-between;
   background-color: var(--white);
   width: 110px;
   z-index: 10;
@@ -27,6 +27,7 @@ const LeftNavBar = styled.div`
 const List = styled.ul`
   width: 100%;
   padding: 0;
+  position: relative;
 `;
 
 const RouteActive = styled.span(
@@ -107,16 +108,27 @@ const MobileMenu = styled.div`
     position: relative;
   }
 `;
-
 const Logo = styled.div`
-  position: absolute;
-  top: 1em;
+  margin-top: 2em;
 `;
 const ScreenMenu = styled.div`
-  height: 100%;
   justify-content: center;
   display: flex;
   flex-flow: column;
+`;
+
+const ContactIcons = styled.div`
+  cursor: pointer;
+  height: 12rem;
+  cursor: pointer;
+  a {
+    text-decoration: none;
+    margin: 0.4em;
+  }
+  span::before {
+    color: var(--text-gray);
+    font-size: 1.3em;
+  }
 `;
 
 const Navigation = () => {
@@ -183,12 +195,30 @@ const Navigation = () => {
       {showNav && <MobileMenu>{menu}</MobileMenu>}
       {
         <LeftNavBar>
-          {!loading && (
-            <Logo>
-              <Icon name="website" styles="font-size: 6em;"></Icon>
-            </Logo>
-          )}
-          <ScreenMenu>{!loading && menu}</ScreenMenu>
+          <Logo>
+            <Icon name="website" styles="font-size: 6em;"></Icon>
+          </Logo>
+          <ScreenMenu>{menu}</ScreenMenu>
+          <ContactIcons>
+            <a
+              href="https://www.linkedin.com/in/sebastian-clavijo/"
+              rel="noreferrer"
+              target="_blank">
+              <Icon name="linkedin"></Icon>
+            </a>
+            <a
+              href="https://github.com/sebascj"
+              rel="noreferrer"
+              target="_blank">
+              <Icon name="github"></Icon>
+            </a>
+            <a
+              href="https://twitter.com/sh4k_the_kid"
+              rel="noreferrer"
+              target="_blank">
+              <Icon name="twitter"></Icon>
+            </a>
+          </ContactIcons>
         </LeftNavBar>
       }
     </>
