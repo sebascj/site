@@ -14,8 +14,8 @@ const defaultSettings = {
 };
 
 const resize = () => {
-  ctx.canvas.width = window.innerWidth;
-  ctx.canvas.height = window.innerHeight;
+  ctx.canvas.width = document.body.offsetWidth;
+  ctx.canvas.height = document.body.offsetHeight;
 };
 
 const loop = () => {
