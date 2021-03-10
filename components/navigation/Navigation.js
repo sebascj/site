@@ -187,9 +187,11 @@ const Navigation = () => {
       )}
       {
         <LeftNavBar>
-          <Logo>
-            <img alt="Website Logo" src="/assets/website-logo.png" />
-          </Logo>
+          {!loading && (
+            <Logo>
+              <img alt="Website Logo" src="/assets/website-logo.png" />
+            </Logo>
+          )}
           <ScreenMenu>{!loading && menu}</ScreenMenu>
         </LeftNavBar>
       }
