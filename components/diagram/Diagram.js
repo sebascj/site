@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import Diagram, { createSchema, useSchema } from 'beautiful-react-diagrams';
+import Tooltip from './NodeTooltip';
 
 import Icon from '../icon/Icon';
 import GoogleMapsIcon from '../icon/GoogleMapsIcon';
@@ -89,7 +90,7 @@ const getCoordinates = (props) => {
 };
 
 const createNode = (props) => {
-  const { name, text, styles, display } = props;
+  const { name, text, styles, display, tooltip } = props;
   const customStyles = `font-size:3em; ${styles ? styles : ''}`;
   const Node =
     display === 'mobile'
@@ -102,6 +103,7 @@ const createNode = (props) => {
   const CustomNode = () => {
     return (
       <Node>
+        <Tooltip label={tooltip} />
         {googleMapsIcon ? (
           <GoogleMapsIcon styles={customStyles} />
         ) : (
@@ -142,63 +144,76 @@ const getInitialState = (display, width, height) => {
     nodes: [
       {
         id: 'node-1',
-        render: createNode({ display, name: 'netlify' })
+        render: createNode({ display, name: 'netlify', tooltip: 'Netlify' })
       },
       {
         id: 'node-2',
-        render: createNode({ display, name: 'html' })
+        render: createNode({ display, name: 'html', tooltip: 'HTML' })
       },
       {
         id: 'node-3',
-        render: createNode({ display, name: 'css' })
+        render: createNode({ display, name: 'css', tooltip: 'CSS' })
       },
       {
         id: 'node-4',
-        render: createNode({ display, name: 'js', styles: 'background: #FFF;' })
+        render: createNode({
+          display,
+          name: 'js',
+          tooltip: 'JavaScript',
+          styles: 'background: #FFF;'
+        })
       },
       {
         id: 'node-5',
-        render: createNode({ display, name: 'react' })
+        render: createNode({ display, name: 'react', tooltip: 'React' })
       },
       {
         id: 'node-6',
-        render: createNode({ display, name: 'nextjs' })
+        render: createNode({ display, name: 'nextjs', tooltip: 'NextJS' })
       },
       {
         id: 'node-7',
-        render: createNode({ display, name: 'styled' })
+        render: createNode({
+          display,
+          name: 'styled',
+          tooltip: 'Styled Componentes'
+        })
       },
       {
         id: 'node-9',
-        render: createNode({ display, name: 'windows' })
+        render: createNode({ display, name: 'windows', tooltip: 'Windows' })
       },
       {
         id: 'node-10',
-        render: createNode({ display, name: 'debian' })
+        render: createNode({ display, name: 'debian', tooltip: 'Debian' })
       },
       {
         id: 'node-11',
-        render: createNode({ display, name: 'git' })
+        render: createNode({ display, name: 'git', tooltip: 'Git' })
       },
       {
         id: 'node-12',
-        render: createNode({ display, name: 'github' })
+        render: createNode({ display, name: 'github', tooltip: 'Github' })
       },
       {
         id: 'node-13',
-        render: createNode({ display, name: 'vscode' })
+        render: createNode({ display, name: 'vscode', tooltip: 'VS Code' })
       },
       {
         id: 'node-14',
-        render: createNode({ display, name: 'maps' })
+        render: createNode({ display, name: 'maps', tooltip: 'Google Maps' })
       },
       {
         id: 'node-15',
-        render: createNode({ display, name: 'analytics' })
+        render: createNode({
+          display,
+          name: 'analytics',
+          tooltip: 'Google Analytics'
+        })
       },
       {
         id: 'node-16',
-        render: createNode({ display, name: 'mailgun' })
+        render: createNode({ display, name: 'mailgun', tooltip: 'Mailgun' })
       }
     ],
     links: [
