@@ -22,31 +22,33 @@ const Tendril = function (settings) {
 };
 Tendril.prototype = {
   update: function (targetX, targetY) {
-    let spring = this.spring,
-      node = this.nodes[0];
+    for (let a = 0; a < 3; a++) {
+      let spring = this.spring,
+        node = this.nodes[0];
 
-    node.vx += (targetX - node.x) * spring;
-    node.vy += (targetY - node.y) * spring;
+      node.vx += (targetX - node.x) * spring;
+      node.vy += (targetY - node.y) * spring;
 
-    for (let prev, i = 0, n = this.nodes.length; i < n; i++) {
-      node = this.nodes[i];
+      for (let prev, i = 0, n = this.nodes.length; i < n; i++) {
+        node = this.nodes[i];
 
-      if (i > 0) {
-        prev = this.nodes[i - 1];
+        if (i > 0) {
+          prev = this.nodes[i - 1];
 
-        node.vx += (prev.x - node.x) * spring;
-        node.vy += (prev.y - node.y) * spring;
-        node.vx += prev.vx * this.settings.dampening;
-        node.vy += prev.vy * this.settings.dampening;
+          node.vx += (prev.x - node.x) * spring;
+          node.vy += (prev.y - node.y) * spring;
+          node.vx += prev.vx * this.settings.dampening;
+          node.vy += prev.vy * this.settings.dampening;
+        }
+
+        node.vx *= this.friction;
+        node.vy *= this.friction;
+
+        node.x += node.vx;
+        node.y += node.vy;
+
+        spring *= this.settings.tension;
       }
-
-      node.vx *= this.friction;
-      node.vy *= this.friction;
-
-      node.x += node.vx;
-      node.y += node.vy;
-
-      spring *= this.settings.tension;
     }
   },
   draw: function (ctx) {
