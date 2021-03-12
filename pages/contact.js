@@ -22,8 +22,9 @@ const ContactWrapper = styled.div`
   height: 100%;
   justify-content: space-between;
   flex-wrap: wrap;
+  box-sizing: border-box;
   @media (min-width: 600px) {
-    margin: 4em;
+    padding: 4em;
   }
 `;
 const ContactIcons = styled.div`
