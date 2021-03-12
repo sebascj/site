@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import tendril from '../components/tendril/tendril.controller';
 import Layout from '../components/layout/layout';
-import { Title, Subtitle, Paragraph } from '../components/font-elements/Fonts';
+import { Title, Subtitle } from '../components/font-elements/Fonts';
 
 const TendrilCanvas = styled.canvas`
   position: absolute;
@@ -28,6 +28,7 @@ const Content = styled.div`
   height: 100vh;
   justify-content: center;
   box-sizing: border-box;
+  margin: 0 4em;
   @media (max-width: 900px) {
     height: unset;
     align-items: center;
