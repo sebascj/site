@@ -7,7 +7,12 @@ import { Title, Paragraph } from '../components/font-elements/Fonts';
 const AboutContent = styled.div`
   display: flex;
   justify-content: center;
-  margin: 4em;
+  @media (max-width: 600px) {
+    box-sizing: border-box;
+    height: 100%;
+    overflow: scroll;
+    padding: 2em 2em 0;
+  }
 `;
 
 const AboutArticle = styled.article`

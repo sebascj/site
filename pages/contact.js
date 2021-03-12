@@ -26,6 +26,11 @@ const ContactWrapper = styled.div`
   @media (min-width: 600px) {
     padding: 4em;
   }
+  @media (max-width: 600px) {
+    box-sizing: border-box;
+    height: 100%;
+    overflow: scroll;
+  }
 `;
 const ContactIcons = styled.div`
   display: flex;

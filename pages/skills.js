@@ -14,6 +14,11 @@ const ProjectContent = styled.div`
   @media (min-width: 600px) {
     margin: 4em;
   }
+  @media (max-width: 600px) {
+    box-sizing: border-box;
+    height: 100%;
+    overflow: scroll;
+  }
 `;
 const SkillsWrapper = styled.div`
   display: flex;
