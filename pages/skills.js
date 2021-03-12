@@ -53,6 +53,7 @@ const Skills = styled.div`
   position: relative;
   .skill-title {
     font-family: 'Hind Vadodara';
+    color: var(--text-gray);
     font-size: 1.3em;
   }
 `;
