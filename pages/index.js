@@ -83,10 +83,7 @@ function HomePage() {
           </Title>
           <SubtitleMobile>
             Frontend developer based in Medellín, Colombia.
-            <br />
-            This is work in progress web page
           </SubtitleMobile>
-          <Paragraph>Currently using NextJS</Paragraph>
           <Contact>
             <Link href="/contact">Contact me</Link>
           </Contact>

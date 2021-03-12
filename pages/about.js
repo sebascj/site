@@ -25,6 +25,7 @@ const AboutArticle = styled.article`
 
 const ImageWrapper = styled.div`
   width: 650px;
+  margin-bottom: 1em;
   @media (max-width: 330px) {
     width: 280px;
   }

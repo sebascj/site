@@ -20,10 +20,19 @@ const SkillsWrapper = styled.div`
   flex-flow: column;
   min-width: 300px;
 `;
-const DiagramWrapper = styled.div`
+
+const Container = styled.div`
+  display: flex;
+  flex-flow: column;
   width: 50%;
   @media (max-width: 900px) {
     width: 100%;
+  }
+  @media (max-width: 600px) {
+    margin-top: 3em;
+    h2 {
+      margin: 0 1em;
+    }
   }
 `;
 
@@ -37,6 +46,10 @@ const ExperienceWrapper = styled.div`
 const Skills = styled.div`
   margin: 20px;
   position: relative;
+  .skill-title {
+    font-family: 'Hind Vadodara';
+    font-size: 1.3em;
+  }
 `;
 const Skill = styled(SkillBar)`
   margin: 20px;
@@ -73,15 +86,6 @@ const StyledCard = styled(Card)`
   }
 `;
 
-const LeftContent = styled.div`
-  display: flex;
-  flex-flow: column;
-  width: 50%;
-  @media (max-width: 900px) {
-    width: 100%;
-  }
-`;
-
 function About() {
   return (
     <>
@@ -90,15 +94,25 @@ function About() {
       </Head>
       <Layout>
         <ProjectContent>
-          <LeftContent>
+          <Container>
+            <Subtitle>Skills and Experience</Subtitle>
             <SkillsWrapper>
               <Skills>
-                <Subtitle>Skills and Experience</Subtitle>
-                <Skill name="Javascript" value="90" color="var(--orange-200)" />
+                <span className="skill-title">Frontend</span>
+                <Skill name="JavaScript" value="90" color="var(--orange-200)" />
                 <Skill name="AngularJS" value="90" color="var(--orange-200)" />
                 <Skill name="React" value="70" color="var(--orange-200)" />
-                <Skill name="Docker" value="50" color="var(--orange-200)" />
+                <span className="skill-title">Server Side</span>
+                <Skill name="NodeJS" value="70" color="var(--orange-200)" />
                 <Skill name="Mongo" value="30" color="var(--orange-200)" />
+                <span className="skill-title">Tools</span>
+                <Skill name="Git" value="80" color="var(--orange-200)" />
+                <Skill
+                  name="Command Line / CLI"
+                  value="80"
+                  color="var(--orange-200)"
+                />
+                <Skill name="Docker" value="50" color="var(--orange-200)" />
               </Skills>
             </SkillsWrapper>
             <ExperienceWrapper>
@@ -120,10 +134,11 @@ function About() {
                 </span>
               </StyledCard>
             </ExperienceWrapper>
-          </LeftContent>
-          <DiagramWrapper id="diagram-container">
+          </Container>
+          <Container id="diagram-container">
+            <Subtitle>Website Architecture</Subtitle>
             <Diagram />
-          </DiagramWrapper>
+          </Container>
         </ProjectContent>
       </Layout>
     </>
