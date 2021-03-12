@@ -28,11 +28,10 @@ const Content = styled.div`
   height: 100vh;
   justify-content: center;
   box-sizing: border-box;
-  margin: 0 4em;
   @media (max-width: 900px) {
     height: unset;
     align-items: center;
-    margin: 5rem 2rem;
+    margin: 10rem 2rem 0;
     padding-bottom: 0;
   }
 `;
