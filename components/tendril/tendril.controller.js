@@ -19,8 +19,6 @@ const resize = () => {
 };
 
 const loop = () => {
-  if (!ctx.running) return;
-
   ctx.globalCompositeOperation = 'source-over';
   ctx.fillStyle = '#f8f8f8';
   ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -40,14 +38,11 @@ const loop = () => {
 };
 
 const startAnimation = () => {
-  if (!ctx.running) {
-    ctx.running = true;
-    loop(ctx);
-  }
+  loop();
 };
 
 const stopAnimation = () => {
-  ctx.running = false;
+  cancelAnimationFrame(animationFrame);
 };
 
 const mousemove = (event) => {
@@ -93,7 +88,7 @@ const init = (e) => {
   resize();
   mousemove(e);
   reset(target.x, target.y);
-  loop(ctx);
+  loop();
 };
 
 const stopTendril = () => {
@@ -112,7 +107,6 @@ const stopTendril = () => {
 
 export default function startTendril(context) {
   ctx = context;
-  ctx.running = true;
 
   document.addEventListener('mousemove', init, { passive: true });
   document.addEventListener('touchstart', init, { passive: true });
