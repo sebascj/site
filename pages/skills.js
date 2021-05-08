@@ -12,7 +12,7 @@ const ProjectContent = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   @media (min-width: 600px) {
-    margin: 4em;
+    margin: 4em 1em 4em 4em;
   }
   @media (max-width: 600px) {
     box-sizing: border-box;
