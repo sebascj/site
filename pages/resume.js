@@ -203,14 +203,6 @@ function Resume() {
               </ExpBox>
               <ExpBox>
                 <ExpTitle>
-                  <span className="title">Frameworks</span>
-                </ExpTitle>
-                <ExpDescription>
-                  <span>AngularJs, React Js</span>
-                </ExpDescription>
-              </ExpBox>
-              <ExpBox>
-                <ExpTitle>
                   <span className="title">Backend</span>
                 </ExpTitle>
                 <ExpDescription>
